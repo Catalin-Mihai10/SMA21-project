@@ -4,9 +4,10 @@ import com.upt.cti.aplicatiecomandat.Interfaces.ICart;
 import com.upt.cti.aplicatiecomandat.DataTypes.Item;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Cart implements ICart{
-    private ArrayList<Item> cart;
+    private List<Item> cart;
 
     public Cart(){
         cart = new ArrayList<>();
@@ -43,6 +44,11 @@ public class Cart implements ICart{
             cart.remove(itemIterator);
 
         return true;
+    }
+
+
+    public List<Item> getCart(){
+        return cart;
     }
 
 }

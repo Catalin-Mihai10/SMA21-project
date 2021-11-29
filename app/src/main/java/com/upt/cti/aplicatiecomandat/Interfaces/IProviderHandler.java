@@ -1,7 +1,9 @@
 package com.upt.cti.aplicatiecomandat.Interfaces;
 
+import com.upt.cti.aplicatiecomandat.DataTypes.Item;
+
 public interface IProviderHandler {
 
-    public boolean verifyProviderDataInDatabase();
+    public void verifyProviderDataInDatabase(Item item);
 
 }

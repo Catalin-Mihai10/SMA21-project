@@ -26,7 +26,6 @@ public class CommandHandler implements ICommandHandler {
 
     public static boolean removeFromCart(Item item) {
         cart.removeItemFromCart(item);
-        dataHandler.removedProccesedItemData(item);
         return false;
     }
 

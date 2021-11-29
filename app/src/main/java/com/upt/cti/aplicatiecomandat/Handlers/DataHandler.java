@@ -8,14 +8,24 @@ import com.upt.cti.aplicatiecomandat.ui.Cart;
 
 public class DataHandler implements IDataHandler{
     private ProccesCommandModule proccesCommandModule;
+    private static ProviderHandler providerHandler;
 
-    public DataHandler(){}
+    public DataHandler(){
+        proccesCommandModule = new ProccesCommandModule();
+        providerHandler = new ProviderHandler(proccesCommandModule);
+    }
 
     @Override
-    public void proccesItemData(Cart cart) {}
+    public void proccesItemData(Cart cart) {
+        for(Item itemIterator : cart.getCart()){
+            providerHandler.verifyProviderDataInDatabase(itemIterator);
+        }
+    }
 
     @Override
-    public void proccesUserData(ClientModule clientModule) {}
+    public void proccesUserData(ClientModule client) {
+        proccesCommandModule.sendResponseToClient(client);
+    }
 
     @Override
     public void removedProccesedItemData(Item item) {

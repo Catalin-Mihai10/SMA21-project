@@ -76,4 +76,10 @@ public class ClientModule implements IClientModule {
     public String getPassword() {
         return this.password;
     }
+
+    @Override
+    public void commandResponse(boolean response) {
+        if(response) System.out.println("Command succefully registered!");
+        else System.out.println("ERROR: Command not registered");
+    }
 }

@@ -5,10 +5,12 @@ import com.upt.cti.aplicatiecomandat.Interfaces.IProductConfirmationModule;
 public class ProductConfirmationModule implements IProductConfirmationModule{
     private ProccesCommandModule proccesCommandModule;
 
-    public ProductConfirmationModule(){}
+    public ProductConfirmationModule(ProccesCommandModule proccesCommandModule){
+        this.proccesCommandModule = proccesCommandModule;
+    }
 
     @Override
-    public boolean validateProviderData() {
-        return false;
+    public void validateProviderData(boolean response) {
+        proccesCommandModule.verifyCommandResponse(response);
     }
 }

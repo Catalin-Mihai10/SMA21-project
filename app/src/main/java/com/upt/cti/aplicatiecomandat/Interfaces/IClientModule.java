@@ -14,4 +14,5 @@ public interface IClientModule {
     public void changePassword(String password);
     public String getUser();
     public String getPassword();
+    public void commandResponse(boolean response);
 }
