@@ -6,5 +6,5 @@ public interface IAuthentificationHandler {
     public boolean addClientInDatabase(String user, String password);
     public boolean removeClientFromDatabase(String user, String password);
     public void requestDataFromDatabase();
-
+    public boolean changePassword(String password);
 }

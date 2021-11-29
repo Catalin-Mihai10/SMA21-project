@@ -17,4 +17,9 @@ public class AuthentificationHandler implements IAuthentificationHandler{
 
     @Override
     public void requestDataFromDatabase() {}
+
+    @Override
+    public boolean changePassword(String password) {
+        return false;
+    }
 }

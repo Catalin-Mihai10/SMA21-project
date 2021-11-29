@@ -1,10 +1,12 @@
 package com.upt.cti.aplicatiecomandat.Interfaces;
 
+import com.upt.cti.aplicatiecomandat.DataTypes.Item;
+
 public interface IClientModule {
 
-    public boolean addToCart(/*item : Item*/);
-    public boolean removeFromCart(/*item : Item*/);
-    public boolean submitCommand(/*item : Item*/);
+    public void addToCart(Item item);
+    public void removeFromCart(Item item);
+    public void submitCommand();
     public void logIn(String user, String password);
     public void printAllCommands();
     public void removeUser();
