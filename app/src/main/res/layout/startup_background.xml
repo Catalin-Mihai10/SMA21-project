@@ -9,6 +9,75 @@
     android:backgroundTint="#CD5E5E">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/oilCardParent"
+        android:layout_width="68dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="171dp"
+        android:layout_marginTop="539dp"
+        android:layout_marginEnd="171dp"
+        android:layout_marginBottom="131dp"
+        app:cardCornerRadius="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <ImageView
+            android:id="@+id/imageOil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#F1F1F1"
+            android:backgroundTint="#E9FFFFFF"
+            tools:srcCompat="@mipmap/ic_oil_foreground" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/meatCardParent"
+        android:layout_width="68dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="470dp"
+        android:layout_marginEnd="289dp"
+        android:layout_marginBottom="171dp"
+        app:cardCornerRadius="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageMeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#F1F1F1"
+            android:backgroundTint="#E9FFFFFF"
+            tools:srcCompat="@mipmap/ic_meat_foreground" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/flourCardParent"
+        android:layout_width="68dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="289dp"
+        android:layout_marginBottom="410dp"
+        app:cardCornerRadius="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageFlour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#F1F1F1"
+            android:backgroundTint="#E9FFFFFF"
+            tools:srcCompat="@mipmap/ic_flour_foreground" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/milkCardParent"
         android:layout_width="68dp"
         android:layout_height="69dp"
@@ -22,6 +91,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/imageMilk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#F1F1F1"
+            android:backgroundTint="#E9FFFFFF"
+            tools:srcCompat="@mipmap/ic_milk_foreground" />
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -65,16 +141,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/imageFruit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#F1F1F1"
+            android:backgroundTint="#E9FFFFFF"
+            tools:srcCompat="@mipmap/ic_fruit_foreground" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/flourCardParent"
+        android:id="@+id/vegetablesCardParent"
         android:layout_width="68dp"
         android:layout_height="69dp"
-        android:layout_marginStart="54dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="289dp"
-        android:layout_marginBottom="410dp"
+        android:layout_marginStart="289dp"
+        android:layout_marginTop="470dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginBottom="171dp"
         app:cardCornerRadius="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,12 +165,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageVegetables"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#F1F1F1"
             android:backgroundTint="#E9FFFFFF"
-            tools:srcCompat="@mipmap/ic_flour_foreground" />
+            tools:srcCompat="@mipmap/ic_vegetables_foreground" />
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
