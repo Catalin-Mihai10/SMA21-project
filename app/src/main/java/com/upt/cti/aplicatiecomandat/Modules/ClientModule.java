@@ -12,7 +12,6 @@ public class ClientModule implements IClientModule {
         this.user = user;
         this.password = password;
 
-        register();
     }
 
     @Override
@@ -43,9 +42,9 @@ public class ClientModule implements IClientModule {
     }
 
     @Override
-    public void logIn(String user, String password) { CommandHandler.logIn(user, password); }
+    public void logIn() { CommandHandler.logIn(this); }
 
-    private void register() { CommandHandler.register(this); }
+    public void register() { CommandHandler.register(this); }
 
     @Override
     public void printAllCommands() { CommandHandler.printAllCommands(); }

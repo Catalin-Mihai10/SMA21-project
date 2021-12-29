@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "339368444357",
+    "project_id": "proiect-sma-cf2fd",
+    "storage_bucket": "proiect-sma-cf2fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:339368444357:android:f51a615418fb7113d98bac",
+        "android_client_info": {
+          "package_name": "com.upt.cti.aplicatiecomandat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "339368444357-hfv9ir2fb553vr4h19okv0io5pupmfou.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC64nwPUsdQxOJchBObUMOrdfd3V2YGwGc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "339368444357-hfv9ir2fb553vr4h19okv0io5pupmfou.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

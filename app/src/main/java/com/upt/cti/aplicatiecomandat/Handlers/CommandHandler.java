@@ -1,5 +1,8 @@
 package com.upt.cti.aplicatiecomandat.Handlers;
 
+import android.util.Log;
+
+import com.upt.cti.aplicatiecomandat.Constants.Constants;
 import com.upt.cti.aplicatiecomandat.DataTypes.Item;
 import com.upt.cti.aplicatiecomandat.Interfaces.ICommandHandler;
 import com.upt.cti.aplicatiecomandat.Modules.ClientModule;
@@ -8,13 +11,11 @@ import com.upt.cti.aplicatiecomandat.ui.Cart;
 import java.util.ArrayList;
 
 public class CommandHandler implements ICommandHandler {
-    private static ArrayList<ClientModule> clientModulesList;
     private static AuthentificationHandler authentificationHandler;
     private static DataHandler dataHandler;
     private static Cart cart;
 
     public CommandHandler(){
-        clientModulesList = new ArrayList<>();
         authentificationHandler = new AuthentificationHandler();
         dataHandler = new DataHandler();
         cart = new Cart();
@@ -36,41 +37,31 @@ public class CommandHandler implements ICommandHandler {
          return true;
     }
 
-    public static void logIn(String user, String password) {
-        boolean response = authentificationHandler.verifyClientInDatabase(user, password);
+    public static void logIn(ClientModule client) {
+        boolean response = authentificationHandler.verifyClientInDatabase(client.getUser(), client.getPassword());
 
-        if(!response) System.out.println("User or password is incorrect");
+        if(!response) Log.d(Constants.COMMANDHANDLER_TAG, "User or password is incorrect!");
     }
 
     public static void register(ClientModule client) {
-        authentificationHandler.addClientInDatabase(client.getUser(), client.getPassword());
-
-        for(ClientModule clientIterator : clientModulesList)
-            if(!doesUserExist(clientIterator, client)) clientModulesList.add(client);
+        if(authentificationHandler.addClientInDatabase(client.getUser(), client.getPassword()))
+            Log.d(Constants.COMMANDHANDLER_TAG, "User added succesfully!");
+        else Log.d(Constants.COMMANDHANDLER_TAG, "User already exists!");
     }
 
     public static void printAllCommands() {}
 
     public static void removeUser(ClientModule client) {
-        authentificationHandler.removeClientFromDatabase(client.getUser(), client.getPassword());
-
-        for(ClientModule clientIterator : clientModulesList)
-            if(doesUserExist(clientIterator,client)) clientModulesList.remove(clientIterator);
-
+        if(authentificationHandler.removeClientFromDatabase(client.getUser(), client.getPassword()))
+            Log.d(Constants.COMMANDHANDLER_TAG, "User removed succesfully!");
+        else Log.d(Constants.COMMANDHANDLER_TAG, "ERROR: User was not removed!");
     }
 
     public static void logOut(ClientModule client) {
-        for(ClientModule clientIterator : clientModulesList)
-            if(clientIterator.getUser().equals(client.getUser())) clientModulesList.remove(clientIterator);
     }
 
     public static boolean changePassword(String password) {
         return authentificationHandler.changePassword(password);
-    }
-
-    private static boolean doesUserExist(ClientModule clientIterator, ClientModule client){
-        if(clientIterator.getUser().equals(client.getUser())) return true;
-        return false;
     }
 
 }

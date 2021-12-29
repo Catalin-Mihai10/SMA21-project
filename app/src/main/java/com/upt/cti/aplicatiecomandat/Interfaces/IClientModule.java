@@ -7,7 +7,7 @@ public interface IClientModule {
     public void addToCart(Item item);
     public void removeFromCart(Item item);
     public void submitCommand();
-    public void logIn(String user, String password);
+    public void logIn();
     public void printAllCommands();
     public void removeUser();
     public void logOut();

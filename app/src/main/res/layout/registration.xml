@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CD5E5E">
+
+    <TextView
+        android:id="@+id/applicationNameView2"
+        android:layout_width="298dp"
+        android:layout_height="107dp"
+        android:background="#00FFFFFF"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:lineSpacingExtra="8sp"
+        android:outlineAmbientShadowColor="#23D396"
+        android:outlineSpotShadowColor="#000A329A"
+        android:shadowColor="#30403B"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="40"
+        android:text="Hezze Pezze "
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#EAE7E7"
+        android:textSize="48sp"
+        android:typeface="normal"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="170dp" />
+
+    <EditText
+        android:id="@+id/usernameRegistrationField"
+        android:layout_width="325dp"
+        android:layout_height="42dp"
+        android:background="@drawable/ic_rounded_shapes"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Type username"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.438" />
+
+    <EditText
+        android:id="@+id/passwordRegistrationField"
+        android:layout_width="325dp"
+        android:layout_height="42dp"
+        android:background="@drawable/ic_rounded_shapes"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Type password"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.566" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="136dp"
+        android:layout_height="39dp"
+        android:background="@drawable/ic_rounded_shapes"
+        android:backgroundTint="#A32C2C"
+        android:text="CANCEL"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/submitButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.676" />
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="136dp"
+        android:layout_height="39dp"
+        android:background="@drawable/ic_rounded_shapes"
+        android:text="SUBMIT"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cancelButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.676" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
