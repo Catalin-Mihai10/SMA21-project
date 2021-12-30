@@ -6,36 +6,40 @@ import android.util.Log;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.upt.cti.aplicatiecomandat.Constants.Constants;
 import com.upt.cti.aplicatiecomandat.Modules.ClientModule;
 
 public class AuthentificationActivity extends AppCompatActivity {
-    private final EditText username = findViewById(Constants.USERNAME);
-    private final EditText password = findViewById(Constants.PASSWORD);
-    private final Button register = findViewById(Constants.REGISTER_BUTTON);
-    private final Button login = findViewById(Constants.LOGIN_BUTTON);
+    private EditText username;
+    private EditText password;
+    private Button register;
+    private Button login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.authentification);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        ClientModule client = new ClientModule(username.getText().toString(), password.getText().toString());
+        username = findViewById(Constants.USERNAME);
+        password = findViewById(Constants.PASSWORD);
+        register = findViewById(Constants.REGISTER_BUTTON);
+        login = findViewById(Constants.LOGIN_BUTTON);
 
-        createRegistrationListener(register);
-        createLogInListener(login, client);
+        createRegistrationListener();
+        createLogInListener();
     }
 
-    public void createRegistrationListener(Button register){
+    public void createRegistrationListener(){
         register.setOnClickListener(view -> startActivity(new Intent(AuthentificationActivity.this, RegistrationActivity.class)));
     }
 
-    public void createLogInListener(Button login, ClientModule client){
+    public void createLogInListener(){
         login.setOnClickListener(view -> {
+
+            ClientModule client = new ClientModule(username.getText().toString(), password.getText().toString());
 
             if(client.logIn()) startActivity(new Intent(AuthentificationActivity.this, MainActivity.class));
             else Log.d(Constants.AUTHENTIFICATION_TAG, "Username or password wrong!");

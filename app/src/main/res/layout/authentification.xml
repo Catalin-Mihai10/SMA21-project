@@ -30,7 +30,7 @@
         tools:layout_editor_absoluteY="170dp" />
 
     <EditText
-        android:id="@+id/usernameRegistrationField"
+        android:id="@+id/usernameAuthentificationField"
         android:layout_width="325dp"
         android:layout_height="42dp"
         android:background="@drawable/ic_rounded_shapes"
@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.438" />
 
     <EditText
-        android:id="@+id/passwordRegistrationField"
+        android:id="@+id/passwordAuthentificationField"
         android:layout_width="325dp"
         android:layout_height="42dp"
         android:background="@drawable/ic_rounded_shapes"
@@ -62,9 +62,10 @@
         app:layout_constraintVertical_bias="0.566" />
 
     <Button
-        android:id="@+id/cancelButton"
+        android:id="@+id/loginButton"
         android:layout_width="136dp"
         android:layout_height="39dp"
+        android:layout_marginEnd="40dp"
         android:background="@drawable/ic_rounded_shapes"
         android:backgroundTint="#A32C2C"
         android:text="Log in"
@@ -76,9 +77,10 @@
         app:layout_constraintVertical_bias="0.676" />
 
     <Button
-        android:id="@+id/submitButton"
+        android:id="@+id/registerButton"
         android:layout_width="136dp"
         android:layout_height="39dp"
+        android:layout_marginStart="40dp"
         android:background="@drawable/ic_rounded_shapes"
         android:text="register"
         app:layout_constraintBottom_toBottomOf="parent"

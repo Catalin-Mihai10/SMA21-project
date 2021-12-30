@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.upt.cti.aplicatiecomandat.Constants.Constants;
 import com.upt.cti.aplicatiecomandat.DataTypes.Item;
+import com.upt.cti.aplicatiecomandat.DataTypes.User;
 import com.upt.cti.aplicatiecomandat.Interfaces.ICommandHandler;
 import com.upt.cti.aplicatiecomandat.Modules.ClientModule;
 import com.upt.cti.aplicatiecomandat.ui.Cart;
@@ -11,15 +12,9 @@ import com.upt.cti.aplicatiecomandat.ui.Cart;
 import java.util.ArrayList;
 
 public class CommandHandler implements ICommandHandler {
-    private static AuthentificationHandler authentificationHandler;
-    private static DataHandler dataHandler;
-    private static Cart cart;
-
-    public CommandHandler(){
-        authentificationHandler = new AuthentificationHandler();
-        dataHandler = new DataHandler();
-        cart = new Cart();
-    }
+    private static AuthentificationHandler authentificationHandler = new AuthentificationHandler();
+    private static DataHandler dataHandler = new DataHandler();
+    private static Cart cart = new Cart();
 
     public static boolean addToCart(Item item) {
         return cart.addItemToCart(item);
@@ -37,14 +32,14 @@ public class CommandHandler implements ICommandHandler {
          return true;
     }
 
-    public static boolean logIn(ClientModule client) {
-        boolean response = authentificationHandler.verifyClientInDatabase(client.getUser(), client.getPassword());
+    public static boolean logIn(User user) {
+        boolean response = authentificationHandler.authentificateClientInDatabase(user);
 
         return response;
     }
 
-    public static boolean register(ClientModule client) {
-        boolean response = authentificationHandler.addClientInDatabase(client.getUser(), client.getPassword());
+    public static boolean register(User user) {
+        boolean response = authentificationHandler.addClientInDatabase(user);
 
         if(response)
             Log.d(Constants.COMMANDHANDLER_TAG, "User added succesfully!");
@@ -55,8 +50,8 @@ public class CommandHandler implements ICommandHandler {
 
     public static void printAllCommands() {}
 
-    public static void removeUser(ClientModule client) {
-        if(authentificationHandler.removeClientFromDatabase(client.getUser(), client.getPassword()))
+    public static void removeUser(User user) {
+        if(authentificationHandler.removeClientFromDatabase(user))
             Log.d(Constants.COMMANDHANDLER_TAG, "User removed succesfully!");
         else Log.d(Constants.COMMANDHANDLER_TAG, "ERROR: User was not removed!");
     }

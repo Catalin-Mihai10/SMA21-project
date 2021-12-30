@@ -12,7 +12,5 @@ public interface IClientModule {
     public void removeUser();
     public void logOut();
     public void changePassword(String currentPassword, String newPassword);
-    public String getUser();
-    public String getPassword();
     public void commandResponse(boolean response);
 }

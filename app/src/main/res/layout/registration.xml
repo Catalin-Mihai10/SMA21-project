@@ -64,7 +64,7 @@
     <Button
         android:id="@+id/cancelButton"
         android:layout_width="136dp"
-        android:layout_height="39dp"
+        android:layout_height="48dp"
         android:background="@drawable/ic_rounded_shapes"
         android:backgroundTint="#A32C2C"
         android:text="CANCEL"
@@ -78,7 +78,7 @@
     <Button
         android:id="@+id/submitButton"
         android:layout_width="136dp"
-        android:layout_height="39dp"
+        android:layout_height="48dp"
         android:background="@drawable/ic_rounded_shapes"
         android:text="SUBMIT"
         app:layout_constraintBottom_toBottomOf="parent"

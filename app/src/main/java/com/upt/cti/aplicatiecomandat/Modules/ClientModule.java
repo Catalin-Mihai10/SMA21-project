@@ -1,17 +1,15 @@
 package com.upt.cti.aplicatiecomandat.Modules;
 
 import com.upt.cti.aplicatiecomandat.DataTypes.Item;
+import com.upt.cti.aplicatiecomandat.DataTypes.User;
 import com.upt.cti.aplicatiecomandat.Handlers.CommandHandler;
 import  com.upt.cti.aplicatiecomandat.Interfaces.IClientModule;
 
 public class ClientModule implements IClientModule {
-    private final String user;
-    private final String password;
+    private User newUser;
 
     public ClientModule(String user, String password) {
-        this.user = user;
-        this.password = password;
-
+        newUser = new User(user, password);
     }
 
     @Override
@@ -42,15 +40,15 @@ public class ClientModule implements IClientModule {
     }
 
     @Override
-    public boolean logIn() { return CommandHandler.logIn(this); }
+    public boolean logIn() { return CommandHandler.logIn(newUser); }
 
-    public boolean register() { return CommandHandler.register(this); }
+    public boolean register() { return CommandHandler.register(newUser); }
 
     @Override
     public void printAllCommands() { CommandHandler.printAllCommands(); }
 
     @Override
-    public void removeUser() { CommandHandler.removeUser(this); }
+    public void removeUser() { CommandHandler.removeUser(newUser); }
 
     @Override
     public void logOut() { CommandHandler.logOut(this); }
@@ -64,16 +62,6 @@ public class ClientModule implements IClientModule {
         if(response) System.out.println("Password changed succesfully!");
         else System.out.println("Password does not respect convention: \n" + passwordConvention);
 
-    }
-
-    @Override
-    public String getUser() {
-        return this.user;
-    }
-
-    @Override
-    public String getPassword() {
-        return this.password;
     }
 
     @Override

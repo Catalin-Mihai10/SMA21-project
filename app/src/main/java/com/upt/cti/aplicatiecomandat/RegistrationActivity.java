@@ -13,27 +13,32 @@ import com.upt.cti.aplicatiecomandat.Constants.Constants;
 import com.upt.cti.aplicatiecomandat.Modules.ClientModule;
 
 public class RegistrationActivity extends AppCompatActivity {
-    private final EditText username = findViewById(Constants.REGISTRATION_USERNAME);
-    private final EditText password = findViewById(Constants.REGISTRATION_PASSWORD);
-    private final Button submit = findViewById(Constants.SUBMIT_BUTTON);
-    private final Button cancel = findViewById(Constants.CANCEL_BUTTON);
+    private EditText username;
+    private EditText password;
+    private Button submit;
+    private Button cancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.authentification);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.registration);
+
+        username = findViewById(Constants.REGISTRATION_USERNAME);
+        password = findViewById(Constants.REGISTRATION_PASSWORD);
+        submit = findViewById(Constants.SUBMIT_BUTTON);
+        cancel = findViewById(Constants.CANCEL_BUTTON);
 
         Log.d(Constants.REGISTRATION_TAG, "RegistrationActivity started");
 
-        ClientModule client = new ClientModule(username.getText().toString(),  password.getText().toString());
-
-        createSubmitListener(client);
+        createSubmitListener();
         createCancelListener();
     }
 
-    public void createSubmitListener(ClientModule client){
+    public void createSubmitListener(){
         submit.setOnClickListener(view -> {
+
+            ClientModule client = new ClientModule(username.getText().toString(),  password.getText().toString());
 
             if(client.register()) startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
             else Log.d(Constants.REGISTRATION_TAG, "Failed registration!");
