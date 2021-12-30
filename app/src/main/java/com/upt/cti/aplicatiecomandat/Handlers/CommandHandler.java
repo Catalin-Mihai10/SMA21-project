@@ -37,16 +37,20 @@ public class CommandHandler implements ICommandHandler {
          return true;
     }
 
-    public static void logIn(ClientModule client) {
+    public static boolean logIn(ClientModule client) {
         boolean response = authentificationHandler.verifyClientInDatabase(client.getUser(), client.getPassword());
 
-        if(!response) Log.d(Constants.COMMANDHANDLER_TAG, "User or password is incorrect!");
+        return response;
     }
 
-    public static void register(ClientModule client) {
-        if(authentificationHandler.addClientInDatabase(client.getUser(), client.getPassword()))
+    public static boolean register(ClientModule client) {
+        boolean response = authentificationHandler.addClientInDatabase(client.getUser(), client.getPassword());
+
+        if(response)
             Log.d(Constants.COMMANDHANDLER_TAG, "User added succesfully!");
         else Log.d(Constants.COMMANDHANDLER_TAG, "User already exists!");
+
+        return response;
     }
 
     public static void printAllCommands() {}
@@ -60,8 +64,8 @@ public class CommandHandler implements ICommandHandler {
     public static void logOut(ClientModule client) {
     }
 
-    public static boolean changePassword(String password) {
-        return authentificationHandler.changePassword(password);
+    public static boolean changePassword(String currentPassword, String newPassword) {
+        return authentificationHandler.changePassword(currentPassword, newPassword);
     }
 
 }

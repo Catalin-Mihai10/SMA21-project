@@ -42,9 +42,9 @@ public class ClientModule implements IClientModule {
     }
 
     @Override
-    public void logIn() { CommandHandler.logIn(this); }
+    public boolean logIn() { return CommandHandler.logIn(this); }
 
-    public void register() { CommandHandler.register(this); }
+    public boolean register() { return CommandHandler.register(this); }
 
     @Override
     public void printAllCommands() { CommandHandler.printAllCommands(); }
@@ -56,10 +56,10 @@ public class ClientModule implements IClientModule {
     public void logOut() { CommandHandler.logOut(this); }
 
     @Override
-    public void changePassword(String newPassword) {
+    public void changePassword(String currentPassword, String newPassword) {
 
         String passwordConvention = "Has to be 8 letters long and must contain at least 1 number,1 capital Letter and 1 special character";
-        boolean response = CommandHandler.changePassword(newPassword);
+        boolean response = CommandHandler.changePassword(currentPassword, newPassword);
 
         if(response) System.out.println("Password changed succesfully!");
         else System.out.println("Password does not respect convention: \n" + passwordConvention);

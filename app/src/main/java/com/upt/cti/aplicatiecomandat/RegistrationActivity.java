@@ -3,7 +3,6 @@ package com.upt.cti.aplicatiecomandat;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,14 +10,13 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.upt.cti.aplicatiecomandat.Constants.Constants;
-import com.upt.cti.aplicatiecomandat.Handlers.AuthentificationHandler;
 import com.upt.cti.aplicatiecomandat.Modules.ClientModule;
 
 public class RegistrationActivity extends AppCompatActivity {
-    private EditText username = (EditText) findViewById(Constants.REGISTRATION_USERNAME);
-    private EditText password = (EditText) findViewById(Constants.REGISTRATION_PASSWORD);
-    private Button submit = (Button) findViewById(Constants.SUBMIT_BUTTON);
-    private Button cancel = (Button) findViewById(Constants.CANCEL_BUTTON);
+    private final EditText username = findViewById(Constants.REGISTRATION_USERNAME);
+    private final EditText password = findViewById(Constants.REGISTRATION_PASSWORD);
+    private final Button submit = findViewById(Constants.SUBMIT_BUTTON);
+    private final Button cancel = findViewById(Constants.CANCEL_BUTTON);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,18 +28,30 @@ public class RegistrationActivity extends AppCompatActivity {
 
         ClientModule client = new ClientModule(username.getText().toString(),  password.getText().toString());
 
-        createSubmitListener(submit, client);
-
+        createSubmitListener(client);
+        createCancelListener();
     }
 
-    public void createSubmitListener(Button submit, ClientModule client){
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                client.register();
-            }
+    public void createSubmitListener(ClientModule client){
+        submit.setOnClickListener(view -> {
+
+            if(client.register()) startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
+            else Log.d(Constants.REGISTRATION_TAG, "Failed registration!");
+
         });
     }
 
+    public void createCancelListener(){
+        cancel.setOnClickListener(view -> {
+
+            Log.d(Constants.REGISTRATION_TAG, "Cancel registration");
+            username.setText(Constants.EMPTY_STRING);
+            password.setText(Constants.EMPTY_STRING);
+
+            Log.d(Constants.REGISTRATION_TAG, "return to MainActivity");
+            finish();
+
+        });
+    }
 
 }
