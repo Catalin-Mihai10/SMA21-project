@@ -1,14 +1,13 @@
 package com.upt.cti.aplicatiecomandat;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.upt.cti.aplicatiecomandat.Constants.Constants;
 import com.upt.cti.aplicatiecomandat.Modules.ClientModule;
 
@@ -29,10 +28,17 @@ public class RegistrationActivity extends AppCompatActivity {
         submit = findViewById(Constants.SUBMIT_BUTTON);
         cancel = findViewById(Constants.CANCEL_BUTTON);
 
+        initializeFields();
+
         Log.d(Constants.REGISTRATION_TAG, "RegistrationActivity started");
 
         createSubmitListener();
         createCancelListener();
+    }
+
+    public void initializeFields(){
+        username.setText(Constants.EMPTY_STRING);
+        password.setText(Constants.EMPTY_STRING);
     }
 
     public void createSubmitListener(){
@@ -40,8 +46,13 @@ public class RegistrationActivity extends AppCompatActivity {
 
             ClientModule client = new ClientModule(username.getText().toString(),  password.getText().toString());
 
-            if(client.register()) startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
-            else Log.d(Constants.REGISTRATION_TAG, "Failed registration!");
+            client.register(data -> {
+                if(data) finish();
+                else {
+                    Toast.makeText(RegistrationActivity.this, "An account with this name already exist!", Toast.LENGTH_SHORT).show();
+                    Log.d(Constants.REGISTRATION_TAG, "Failed registration!");
+                }
+            });
 
         });
     }

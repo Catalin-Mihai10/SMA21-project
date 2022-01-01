@@ -6,7 +6,7 @@ import com.upt.cti.aplicatiecomandat.ui.Cart;
 
 public interface IDataHandler {
 
-    public void proccesItemData(Cart cart);
-    public void proccesUserData(ClientModule clientModule);
-    public void removedProccesedItemData(Item item);
+    void proccesItemData(Cart cart);
+    void proccesUserData(ClientModule clientModule);
+    void removedProccesedItemData(Item item);
 }

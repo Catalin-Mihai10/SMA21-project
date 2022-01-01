@@ -9,6 +9,8 @@ public class Item {
     private String provider;
     private Category category;
 
+    public Item(){}
+
     public Item(String name, int itemId, String provider, Category category){
         this.name = name;
         this.itemId = itemId;

@@ -5,16 +5,15 @@ import android.util.Log;
 import com.upt.cti.aplicatiecomandat.Constants.Constants;
 import com.upt.cti.aplicatiecomandat.DataTypes.Item;
 import com.upt.cti.aplicatiecomandat.DataTypes.User;
+import com.upt.cti.aplicatiecomandat.Interfaces.Callback;
 import com.upt.cti.aplicatiecomandat.Interfaces.ICommandHandler;
 import com.upt.cti.aplicatiecomandat.Modules.ClientModule;
 import com.upt.cti.aplicatiecomandat.ui.Cart;
 
-import java.util.ArrayList;
-
 public class CommandHandler implements ICommandHandler {
-    private static AuthentificationHandler authentificationHandler = new AuthentificationHandler();
-    private static DataHandler dataHandler = new DataHandler();
-    private static Cart cart = new Cart();
+    private final static AuthenticationHandler authenticationHandler = new AuthenticationHandler();
+    private final static DataHandler dataHandler = new DataHandler();
+    private final static Cart cart = new Cart();
 
     public static boolean addToCart(Item item) {
         return cart.addItemToCart(item);
@@ -32,35 +31,38 @@ public class CommandHandler implements ICommandHandler {
          return true;
     }
 
-    public static boolean logIn(User user) {
-        boolean response = authentificationHandler.authentificateClientInDatabase(user);
-
-        return response;
+    public static void logIn(User user, Callback<Boolean> startMainActivity) {
+        authenticationHandler.checkIfClientIsInDatabase(user, data -> {
+            if(data) startMainActivity.callback(true);
+        });
     }
 
-    public static boolean register(User user) {
-        boolean response = authentificationHandler.addClientInDatabase(user);
-
-        if(response)
-            Log.d(Constants.COMMANDHANDLER_TAG, "User added succesfully!");
-        else Log.d(Constants.COMMANDHANDLER_TAG, "User already exists!");
-
-        return response;
+    public static void register(User user, Callback<Boolean> checkIfUserAlreadyExists) {
+        authenticationHandler.addClientInDatabase(user, data -> {
+             if(data) {
+                 checkIfUserAlreadyExists.callback(true);
+                 Log.d(Constants.COMMAND_HANDLER_TAG, "User added successfully!");
+             }
+             else{
+                 Log.d(Constants.COMMAND_HANDLER_TAG, "User already exists!");
+             }
+         });
     }
 
     public static void printAllCommands() {}
 
     public static void removeUser(User user) {
-        if(authentificationHandler.removeClientFromDatabase(user))
-            Log.d(Constants.COMMANDHANDLER_TAG, "User removed succesfully!");
-        else Log.d(Constants.COMMANDHANDLER_TAG, "ERROR: User was not removed!");
+        if(authenticationHandler.removeClientFromDatabase(user))
+            Log.d(Constants.COMMAND_HANDLER_TAG, "User removed successfully!");
+        else Log.d(Constants.COMMAND_HANDLER_TAG, "ERROR: User was not removed!");
     }
 
     public static void logOut(ClientModule client) {
+
     }
 
     public static boolean changePassword(String currentPassword, String newPassword) {
-        return authentificationHandler.changePassword(currentPassword, newPassword);
+        return authenticationHandler.changePassword(currentPassword, newPassword);
     }
 
 }

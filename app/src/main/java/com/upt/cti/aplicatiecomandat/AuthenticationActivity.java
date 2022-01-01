@@ -6,12 +6,14 @@ import android.util.Log;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.upt.cti.aplicatiecomandat.Constants.Constants;
 import com.upt.cti.aplicatiecomandat.Modules.ClientModule;
 
-public class AuthentificationActivity extends AppCompatActivity {
+public class AuthenticationActivity extends AppCompatActivity {
     private EditText username;
     private EditText password;
     private Button register;
@@ -28,12 +30,19 @@ public class AuthentificationActivity extends AppCompatActivity {
         register = findViewById(Constants.REGISTER_BUTTON);
         login = findViewById(Constants.LOGIN_BUTTON);
 
+        initializeFields();
+
         createRegistrationListener();
         createLogInListener();
     }
 
+    public void initializeFields(){
+        username.setText(Constants.EMPTY_STRING);
+        password.setText(Constants.EMPTY_STRING);
+    }
+
     public void createRegistrationListener(){
-        register.setOnClickListener(view -> startActivity(new Intent(AuthentificationActivity.this, RegistrationActivity.class)));
+        register.setOnClickListener(view -> startActivity(new Intent(AuthenticationActivity.this, RegistrationActivity.class)));
     }
 
     public void createLogInListener(){
@@ -41,9 +50,13 @@ public class AuthentificationActivity extends AppCompatActivity {
 
             ClientModule client = new ClientModule(username.getText().toString(), password.getText().toString());
 
-            if(client.logIn()) startActivity(new Intent(AuthentificationActivity.this, MainActivity.class));
-            else Log.d(Constants.AUTHENTIFICATION_TAG, "Username or password wrong!");
-
+            client.logIn(data -> {
+                if(data) startActivity(new Intent(AuthenticationActivity.this, MainActivity.class));
+                else{
+                    Toast.makeText(AuthenticationActivity.this, "Username or password wrong!", Toast.LENGTH_SHORT).show();
+                    Log.d(Constants.AUTHENTICATION_TAG, "Username or password wrong!");
+                }
+            });
         });
     }
 }

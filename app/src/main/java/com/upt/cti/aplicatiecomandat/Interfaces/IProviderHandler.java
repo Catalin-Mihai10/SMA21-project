@@ -4,6 +4,6 @@ import com.upt.cti.aplicatiecomandat.DataTypes.Item;
 
 public interface IProviderHandler {
 
-    public void verifyProviderDataInDatabase(Item item);
+    void verifyProviderDataInDatabase(Item item);
 
 }

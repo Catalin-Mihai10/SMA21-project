@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AplicatieComandat">
         <activity
-            android:name=".AuthentificationActivity"
+            android:name=".AuthenticationActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

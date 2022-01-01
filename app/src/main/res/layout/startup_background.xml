@@ -20,7 +20,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/imageOil"
@@ -104,8 +104,8 @@
         android:id="@+id/applicationNameView"
         android:layout_width="415dp"
         android:layout_height="209dp"
-        android:layout_marginTop="261dp"
-        android:layout_marginBottom="261dp"
+        android:layout_marginTop="266dp"
+        android:layout_marginBottom="265dp"
         android:background="#00FFFFFF"
         android:fontFamily="cursive"
         android:gravity="center"
@@ -120,7 +120,7 @@
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#EAE7E7"
-        android:textSize="96sp"
+        android:textSize="85sp"
         android:typeface="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

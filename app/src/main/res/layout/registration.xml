@@ -10,6 +10,10 @@
         android:id="@+id/applicationNameView2"
         android:layout_width="298dp"
         android:layout_height="107dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="157dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="476dp"
         android:background="#00FFFFFF"
         android:fontFamily="cursive"
         android:gravity="center"
@@ -24,15 +28,17 @@
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#EAE7E7"
-        android:textSize="48sp"
+        android:textSize="60sp"
         android:typeface="normal"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="170dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/usernameRegistrationField"
         android:layout_width="325dp"
-        android:layout_height="42dp"
+        android:layout_height="48dp"
         android:background="@drawable/ic_rounded_shapes"
         android:ems="10"
         android:gravity="center"
@@ -48,7 +54,7 @@
     <EditText
         android:id="@+id/passwordRegistrationField"
         android:layout_width="325dp"
-        android:layout_height="42dp"
+        android:layout_height="48dp"
         android:background="@drawable/ic_rounded_shapes"
         android:ems="10"
         android:gravity="center"
