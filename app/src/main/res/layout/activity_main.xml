@@ -20,16 +20,20 @@
 
         <Button
             android:id="@+id/logOutButton"
-            android:layout_width="109dp"
-            android:layout_height="68dp"
-            android:layout_marginStart="248dp"
-            android:layout_marginEnd="7dp"
-            android:layout_marginBottom="1dp"
+            android:layout_width="103dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="245dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/ic_rounded_shapes"
             android:text="LOG OUT"
+            android:textColor="#CD5E5E"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -27,6 +27,10 @@ public class Constants {
     public static final String CHILD_USERNAME = "username";
     public static final String CHILD_PASSWORD = "password";
 
+    //ProductDataHandler Constants
+    public static final String PRODUCT_DATA_HANDLER_TAG = "ProductDataHandler";
+    public static final String CHILD_PROVIDERS = "providers";
+
     //MainActivity Constants
     public static final int LOGOUT_BUTTON = R.id.logOutButton;
     public static final int FLOURS_BUTTON = R.id.tFainoase;
@@ -35,6 +39,7 @@ public class Constants {
     public static final int FRUITS_BUTTON = R.id.tLactate;
     public static final int ANIMALS_BUTTON = R.id.tFainoase;
     public static final int OILS_BUTTON = R.id.tLactate;
+    public static final int OFFERS_VIEW = R.id.offersListView;
 
     //Universal Constants
     public static final String EMPTY_STRING = "";

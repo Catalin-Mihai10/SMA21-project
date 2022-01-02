@@ -1,4 +1,4 @@
-package com.upt.cti.aplicatiecomandat.Enums;
+package com.upt.cti.aplicatiecomandat.Utilities;
 
 public enum Category {
     FRUITS,
@@ -6,5 +6,6 @@ public enum Category {
     ANIMAL_PRODUCTS,
     LACTATE,
     CEREALS,
-    OILS
+    OILS,
+    OFFERS
 }
