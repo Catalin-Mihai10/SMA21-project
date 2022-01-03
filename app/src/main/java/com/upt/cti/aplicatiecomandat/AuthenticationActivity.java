@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.upt.cti.aplicatiecomandat.Constants.Constants;
 import com.upt.cti.aplicatiecomandat.Modules.ClientModule;
+import com.upt.cti.aplicatiecomandat.Test.CreateProductsAndStoreThem;
 
 public class AuthenticationActivity extends AppCompatActivity {
     private EditText username;
@@ -23,12 +24,15 @@ public class AuthenticationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.authentification);
+        setContentView(Constants.AUTHENTICATION_LAYOUT);
 
         username = findViewById(Constants.USERNAME);
         password = findViewById(Constants.PASSWORD);
         register = findViewById(Constants.REGISTER_BUTTON);
         login = findViewById(Constants.LOGIN_BUTTON);
+
+        CreateProductsAndStoreThem instance = new CreateProductsAndStoreThem();
+        instance.initialize();
 
         initializeFields();
 

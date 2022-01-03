@@ -59,7 +59,7 @@
         android:ems="10"
         android:gravity="center"
         android:hint="Type password"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

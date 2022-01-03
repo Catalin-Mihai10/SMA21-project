@@ -3,7 +3,7 @@ import com.upt.cti.aplicatiecomandat.R;
 
 public class Constants {
 
-    //MainActivity Constants
+    //AuthenticationActivity Constants
     public static final String AUTHENTICATION_TAG = "AuthenticationActivity";
     public static final int USERNAME = R.id.usernameAuthentificationField;
     public static final int PASSWORD = R.id.passwordAuthentificationField;
@@ -32,6 +32,7 @@ public class Constants {
     public static final String CHILD_PROVIDERS = "providers";
 
     //MainActivity Constants
+    public static final String MAIN_TAG = "MainActivity";
     public static final int LOGOUT_BUTTON = R.id.logOutButton;
     public static final int FLOURS_BUTTON = R.id.tFainoase;
     public static final int LACTATE_BUTTON = R.id.tLactate;
@@ -41,6 +42,34 @@ public class Constants {
     public static final int OILS_BUTTON = R.id.tLactate;
     public static final int OFFERS_VIEW = R.id.offersListView;
 
+    //CartActivity Constants
+    public static final String CART_TAG = "CartActivity";
+    public static final int SUBMIT_COMMAND_BUTTON = R.id.submitCommandButton;
+    public static final int CANCEL_COMMAND_BUTTON = R.id.cancelCommandButton;
+    public static final int CART_LISTVIEW = R.id.cartListView;
+
     //Universal Constants
     public static final String EMPTY_STRING = "";
+
+    //Layouts
+    public static final int AUTHENTICATION_LAYOUT = R.layout.authentification;
+    public static final int REGISTRATION_LAYOUT = R.layout.registration;
+    public static final int MAIN_LAYOUT = R.layout.activity_main;
+    public static final int ITEM_LAYOUT = R.layout.item;
+    public static final int CART_LAYOUT = R.layout.cart_activity;
+    public static final int CART_ITEM_LAYOUT = R.layout.cart_item;
+
+
+    //ItemAdapter Constants
+    public static final int ITEM_NAME_FIELD = R.id.tName;
+    public static final int ITEM_COST_FIELD = R.id.tCost;
+    public static final int ITEM_PROVIDER_FIELD = R.id.tProvider;
+    public static final int ITEM_CATEGORY_FIELD = R.id.tCategory;
+    public static final int ADD_ITEM_BUTTON = R.id.addButtton;
+
+    //CartItemAdatper Constants
+    public static final int CART_ITEM_NAME_FIELD = R.id.cartTName;
+    public static final int CART_ITEM_COST_FIELD = R.id.cartTCost;
+    public static final int CART_ITEM_QUANTITY_FIELD = R.id.tCantitate;
+    public static final int REMOVE_ITEM_FROM_CART_BUTTON = R.id.removeButton;
 }

@@ -15,10 +15,6 @@ public class Cart implements ICart{
 
     @Override
     public boolean addItemToCart(Item item) {
-
-        for(Item itemIterator : cart)
-            if(itemIterator.equals(item)) return false;
-
         cart.add(item);
         return true;
     }

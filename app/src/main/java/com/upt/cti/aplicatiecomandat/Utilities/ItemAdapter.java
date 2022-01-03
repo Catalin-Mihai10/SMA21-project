@@ -9,8 +9,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.upt.cti.aplicatiecomandat.AuthenticationActivity;
+import com.upt.cti.aplicatiecomandat.Constants.Constants;
 import com.upt.cti.aplicatiecomandat.DataTypes.Item;
+import com.upt.cti.aplicatiecomandat.Handlers.CommandHandler;
+import com.upt.cti.aplicatiecomandat.MainActivity;
 import com.upt.cti.aplicatiecomandat.R;
 
 import java.util.List;
@@ -39,11 +44,11 @@ public class ItemAdapter extends ArrayAdapter<Item> {
             itemHolder = new ItemHolder();
 
             view = inflater.inflate(layoutResourceId, parent, false);
-            itemHolder.tName = view.findViewById(R.id.tName);
-            itemHolder.tProvider = view.findViewById(R.id.tProvider);
-            itemHolder.tCategory = view.findViewById(R.id.tCategory);
-            itemHolder.tCost = view.findViewById(R.id.tCost);
-            itemHolder.addButton = view.findViewById(R.id.addButtton);
+            itemHolder.tName = view.findViewById(Constants.ITEM_NAME_FIELD);
+            itemHolder.tProvider = view.findViewById(Constants.ITEM_PROVIDER_FIELD);
+            itemHolder.tCategory = view.findViewById(Constants.ITEM_CATEGORY_FIELD);
+            itemHolder.tCost = view.findViewById(Constants.ITEM_COST_FIELD);
+            itemHolder.addButton = view.findViewById(Constants.ADD_ITEM_BUTTON);
 
             view.setTag(itemHolder);
 
@@ -55,13 +60,17 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 
         itemHolder.tName.setText(item.getItemName());
         itemHolder.tProvider.setText(item.getItemProvider());
-        itemHolder.tCost.setText(item.getItemCost() + " LEI");
+        String cost = item.getItemCost() + " LEI";
+        itemHolder.tCost.setText(cost);
         itemHolder.tCategory.setText(item.getItemCategory().toString());
-        itemHolder.addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        itemHolder.addButton.setOnClickListener(auxView -> {
+            Item item1 = new Item(itemHolder.tName.getText().toString(),
+                                 Double.parseDouble(itemHolder.tCost.getText().toString()),
+                                 itemHolder.tProvider.getText().toString(),
+                                 Category.stringToCategory(itemHolder.tCategory.getText().toString()));
 
-            }
+            if(CommandHandler.addToCart(item1))
+                Toast.makeText(context, "Username or password wrong!", Toast.LENGTH_SHORT).show();
         });
         return view;
     }

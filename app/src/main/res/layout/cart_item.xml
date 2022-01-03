@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    card_view:cardBackgroundColor="#D7DDDD"
+    card_view:cardCornerRadius="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="4dp" >
+
+        <Button
+            android:id="@+id/removeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:minHeight="48dp"
+            android:text="REMOVE"
+            android:textColor="#CD5E5E"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/tCantitate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/removeButton"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="103dp"
+            android:layout_marginBottom="11dp"
+            android:hint="Cantitate"
+            android:textColor="#CD5E5E"
+            android:textColorHint="#CD5E5E"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/cartTCost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="false"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="152dp"
+            android:layout_marginBottom="11dp"
+            android:hint="Cost"
+            android:textColor="#CD5E5E"
+            android:textColorHint="#CD5E5E"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/cartTName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="35dp"
+            android:layout_marginBottom="11dp"
+            android:hint="Name"
+            android:textColor="#CD5E5E"
+            android:textColorHint="#CD5E5E"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

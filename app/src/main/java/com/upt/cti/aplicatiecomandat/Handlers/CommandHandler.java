@@ -10,6 +10,8 @@ import com.upt.cti.aplicatiecomandat.Interfaces.ICommandHandler;
 import com.upt.cti.aplicatiecomandat.Modules.ClientModule;
 import com.upt.cti.aplicatiecomandat.ui.Cart;
 
+import java.util.List;
+
 public class CommandHandler implements ICommandHandler {
     private final static AuthenticationHandler authenticationHandler = new AuthenticationHandler();
     private final static DataHandler dataHandler = new DataHandler();
@@ -22,6 +24,10 @@ public class CommandHandler implements ICommandHandler {
     public static boolean removeFromCart(Item item) {
         cart.removeItemFromCart(item);
         return false;
+    }
+
+    public static List<Item> getCart(){
+        return cart.getCart();
     }
 
     public static boolean submitCommand(ClientModule client) {

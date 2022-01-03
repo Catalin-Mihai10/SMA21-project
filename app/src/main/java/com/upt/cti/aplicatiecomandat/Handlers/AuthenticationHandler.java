@@ -77,12 +77,6 @@ public class AuthenticationHandler implements IAuthenticationHandler {
                     hashedValueCurrentUser = HashingSHA256.getEncoding(user.getUsername());
                     hashedValueCurrentPassword = HashingSHA256.getEncoding(user.getPassword());
 
-                    Log.d(Constants.AUTHENTICATION_HANDLE_TAG, "user in database:" + hashedValueDatabaseUser);
-                    Log.d(Constants.AUTHENTICATION_HANDLE_TAG, "user given:" + hashedValueCurrentUser);
-
-                    Log.d(Constants.AUTHENTICATION_HANDLE_TAG, "user in database:" + hashedValueDatabasePassword);
-                    Log.d(Constants.AUTHENTICATION_HANDLE_TAG, "user given:" + hashedValueCurrentPassword);
-
                     if(hashedValueCurrentUser.equals(hashedValueDatabaseUser) && hashedValueCurrentPassword.equals(hashedValueDatabasePassword))
                         userIsInDatabase.callback(true);
                 }

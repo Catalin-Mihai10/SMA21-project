@@ -21,7 +21,7 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registration);
+        setContentView(Constants.REGISTRATION_LAYOUT);
 
         username = findViewById(Constants.REGISTRATION_USERNAME);
         password = findViewById(Constants.REGISTRATION_PASSWORD);

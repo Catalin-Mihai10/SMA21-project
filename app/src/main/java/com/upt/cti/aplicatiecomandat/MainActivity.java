@@ -3,10 +3,12 @@ package com.upt.cti.aplicatiecomandat;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.upt.cti.aplicatiecomandat.Constants.Constants;
 import com.upt.cti.aplicatiecomandat.DataTypes.Item;
@@ -16,6 +18,7 @@ import com.upt.cti.aplicatiecomandat.Utilities.ItemAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class MainActivity extends AppCompatActivity {
     private Button logOut;
@@ -25,14 +28,16 @@ public class MainActivity extends AppCompatActivity {
     private TextView vegetables;
     private TextView animals;
     private TextView oils;
+    private ListView offers;
     private List<Item> items;
     private ProductDataHandler productDataHandler;
+    private ItemAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(Constants.MAIN_LAYOUT);
 
         logOut = findViewById(Constants.LOGOUT_BUTTON);
         flours = findViewById(Constants.FLOURS_BUTTON);
@@ -41,15 +46,12 @@ public class MainActivity extends AppCompatActivity {
         vegetables = findViewById(Constants.VEGETABLES_BUTTON);
         animals = findViewById(Constants.ANIMALS_BUTTON);
         oils = findViewById(Constants.OILS_BUTTON);
-        ListView offers = findViewById(Constants.OFFERS_VIEW);
+        offers = findViewById(Constants.OFFERS_VIEW);
         items = new ArrayList<>();
 
         productDataHandler = new ProductDataHandler();
 
         loadListOfOffers();
-
-        final ItemAdapter adapter = new ItemAdapter(this, R.layout.item, items);
-        offers.setAdapter(adapter);
 
         createLogOutListener();
         createFloursListener();
@@ -65,31 +67,56 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createFloursListener(){
-        flours.setOnClickListener(view -> items = productDataHandler.loadProductsFromDataBase(Category.CEREALS));
+        flours.setOnClickListener(view -> {
+            loadAdapter(Category.CEREALS);
+        });
+    }
+
+    private void loadAdapter(Category category) {
+        items = productDataHandler.loadProductsFromDataBase(category, data -> {
+            if(data){
+                Log.d(Constants.MAIN_TAG, "cream un adapter nou");
+                adapter = new ItemAdapter(MainActivity.this, Constants.ITEM_LAYOUT, items);
+                offers.setAdapter(adapter);
+            }
+            else {
+                Toast.makeText(MainActivity.this, "ERROR: Data could not be loaded!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void createLactateListener(){
-        lactate.setOnClickListener(view -> items = productDataHandler.loadProductsFromDataBase(Category.LACTATE));
+        lactate.setOnClickListener(view -> {
+            loadAdapter(Category.LACTATE);
+        });
     }
 
     public void createFruitsListener(){
-        fruits.setOnClickListener(view -> items = productDataHandler.loadProductsFromDataBase(Category.FRUITS));
+        fruits.setOnClickListener(view -> {
+            loadAdapter(Category.FRUITS);
+        });
     }
 
     public void createVegetablesListener(){
-        vegetables.setOnClickListener(view -> items = productDataHandler.loadProductsFromDataBase(Category.VEGETABLES));
+        vegetables.setOnClickListener(view -> {
+            loadAdapter(Category.VEGETABLES);
+        });
     }
 
     public void createAnimalsListener(){
-        animals.setOnClickListener(view -> items = productDataHandler.loadProductsFromDataBase(Category.ANIMAL_PRODUCTS));
+        animals.setOnClickListener(view -> {
+            loadAdapter(Category.ANIMAL_PRODUCTS);
+        });
     }
 
     public void createOilsListener(){
-        oils.setOnClickListener(view -> items = productDataHandler.loadProductsFromDataBase(Category.OILS));
+        oils.setOnClickListener(view -> {
+            loadAdapter(Category.OILS);
+        });
     }
 
     public void loadListOfOffers(){
-        items = productDataHandler.loadProductsFromDataBase(Category.OFFERS);
+        loadAdapter(Category.OFFERS);
     }
 
 }
