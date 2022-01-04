@@ -64,13 +64,15 @@ public class ItemAdapter extends ArrayAdapter<Item> {
         itemHolder.tCost.setText(cost);
         itemHolder.tCategory.setText(item.getItemCategory().toString());
         itemHolder.addButton.setOnClickListener(auxView -> {
+            String[] selectedItemCost = itemHolder.tCost.getText().toString().split(" ");
+
             Item item1 = new Item(itemHolder.tName.getText().toString(),
-                                 Double.parseDouble(itemHolder.tCost.getText().toString()),
+                                 Double.parseDouble(selectedItemCost[0]),
                                  itemHolder.tProvider.getText().toString(),
                                  Category.stringToCategory(itemHolder.tCategory.getText().toString()));
 
             if(CommandHandler.addToCart(item1))
-                Toast.makeText(context, "Username or password wrong!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Item added to the cart!", Toast.LENGTH_SHORT).show();
         });
         return view;
     }

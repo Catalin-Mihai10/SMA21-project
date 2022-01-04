@@ -30,12 +30,12 @@
             android:layout_alignRight="@id/removeButton"
             android:layout_alignParentLeft="false"
             android:layout_alignParentBottom="true"
-            android:layout_marginRight="103dp"
+            android:layout_marginRight="123dp"
             android:layout_marginBottom="11dp"
             android:hint="Cantitate"
             android:textColor="#CD5E5E"
             android:textColorHint="#CD5E5E"
-            android:textSize="16sp" />
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/cartTCost"
@@ -49,7 +49,7 @@
             android:hint="Cost"
             android:textColor="#CD5E5E"
             android:textColorHint="#CD5E5E"
-            android:textSize="16sp" />
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/cartTName"
@@ -62,7 +62,7 @@
             android:hint="Name"
             android:textColor="#CD5E5E"
             android:textColorHint="#CD5E5E"
-            android:textSize="16sp" />
+            android:textSize="10sp" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

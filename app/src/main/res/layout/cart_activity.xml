@@ -8,8 +8,8 @@
 
     <ListView
         android:id="@+id/cartListView"
-        android:layout_width="337dp"
-        android:layout_height="654dp"
+        android:layout_width="331dp"
+        android:layout_height="580dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="9dp"
         android:layout_marginEnd="5dp"
@@ -25,31 +25,27 @@
         android:id="@+id/submitCommandButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="676dp"
-        android:layout_marginEnd="260dp"
-        android:layout_marginBottom="16dp"
-        android:text="Button"
+        android:text="SUBMIT"
         android:textColor="#CD5E5E"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.058"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.869" />
 
     <Button
         android:id="@+id/cancelCommandButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="261dp"
-        android:layout_marginTop="676dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="16dp"
-        android:text="Button"
+        android:text="CANCEL"
         android:textColor="#CD5E5E"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.948"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.868" />
 </androidx.constraintlayout.widget.ConstraintLayout>

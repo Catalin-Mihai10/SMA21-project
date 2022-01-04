@@ -41,12 +41,26 @@ public class Constants {
     public static final int ANIMALS_BUTTON = R.id.tFainoase;
     public static final int OILS_BUTTON = R.id.tLactate;
     public static final int OFFERS_VIEW = R.id.offersListView;
+    public static final int CART_BUTTON = R.id.cartButton;
 
     //CartActivity Constants
     public static final String CART_TAG = "CartActivity";
     public static final int SUBMIT_COMMAND_BUTTON = R.id.submitCommandButton;
     public static final int CANCEL_COMMAND_BUTTON = R.id.cancelCommandButton;
     public static final int CART_LISTVIEW = R.id.cartListView;
+
+    //ShipmentActivity Constants
+    public static final String SHIPMENT_TAG = "ShipmentActivity";
+    public static final int PHONE_FIELD = R.id.tPhone;
+    public static final int ADDRESS_FIELD = R.id.tAdress;
+    public static final int LOCAL_SPINNER = R.id.localitateSpinner;
+    public static final int COUNTY_SPINNER = R.id.JudetSpinner;
+    public static final int REPAYMENT_BUTTON = R.id.rambursButton;
+    public static final int CARD_BUTTON = R.id.cardButton;
+    public static final int BACK_BUTTON = R.id.backButton;
+
+    //CardActivity Constants
+    public static final String CARD_TAG = "CardActivity";
 
     //Universal Constants
     public static final String EMPTY_STRING = "";
@@ -58,7 +72,8 @@ public class Constants {
     public static final int ITEM_LAYOUT = R.layout.item;
     public static final int CART_LAYOUT = R.layout.cart_activity;
     public static final int CART_ITEM_LAYOUT = R.layout.cart_item;
-
+    public static final int SHIPMENT_LAYOUT = R.layout.shipment_information_activity;
+    public static final int CARD_LAYOUT = R.layout.card_activity;
 
     //ItemAdapter Constants
     public static final int ITEM_NAME_FIELD = R.id.tName;
@@ -67,7 +82,7 @@ public class Constants {
     public static final int ITEM_CATEGORY_FIELD = R.id.tCategory;
     public static final int ADD_ITEM_BUTTON = R.id.addButtton;
 
-    //CartItemAdatper Constants
+    //CartItemAdapter Constants
     public static final int CART_ITEM_NAME_FIELD = R.id.cartTName;
     public static final int CART_ITEM_COST_FIELD = R.id.cartTCost;
     public static final int CART_ITEM_QUANTITY_FIELD = R.id.tCantitate;

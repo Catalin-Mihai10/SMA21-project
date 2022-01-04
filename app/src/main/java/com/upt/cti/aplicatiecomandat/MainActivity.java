@@ -2,6 +2,7 @@ package com.upt.cti.aplicatiecomandat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
@@ -22,6 +23,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class MainActivity extends AppCompatActivity {
     private Button logOut;
+    private Button cart;
     private TextView flours;
     private TextView lactate;
     private TextView fruits;
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(Constants.MAIN_LAYOUT);
 
         logOut = findViewById(Constants.LOGOUT_BUTTON);
+        cart = findViewById(Constants.CART_BUTTON);
         flours = findViewById(Constants.FLOURS_BUTTON);
         lactate = findViewById(Constants.LACTATE_BUTTON);
         fruits = findViewById(Constants.FRUITS_BUTTON);
@@ -54,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         loadListOfOffers();
 
         createLogOutListener();
+        createCartListener();
         createFloursListener();
         createLactateListener();
         createFruitsListener();
@@ -65,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
     public void createLogOutListener(){
         logOut.setOnClickListener(view -> finish());
     }
+
+    public void createCartListener(){ cart.setOnClickListener(view ->  startActivity(new Intent(MainActivity.this, CartActivity.class)));}
 
     public void createFloursListener(){
         flours.setOnClickListener(view -> {

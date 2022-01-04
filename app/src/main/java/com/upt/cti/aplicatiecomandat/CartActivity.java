@@ -1,5 +1,6 @@
 package com.upt.cti.aplicatiecomandat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.Button;
@@ -41,13 +42,14 @@ public class CartActivity extends AppCompatActivity {
 
     public void createSubmitCommandListener(){
         submitCommand.setOnClickListener(view -> {
-
+            startActivity(new Intent(CartActivity.this, ShipmentActivity.class));
+            finish();
         });
     }
 
     public void createCancelCommandListener(){
         cancelCommand.setOnClickListener(view -> {
-
+            finish();
         });
     }
 }

@@ -54,7 +54,9 @@ public class CartItemAdapter extends ArrayAdapter<Item> {
         itemHolder.tCantitate.setText(item.getItemProvider());
         String cost = item.getItemCost() + " LEI";
         itemHolder.tCost.setText(cost);
-        itemHolder.removeItem.setOnClickListener(auxView -> {});
+        itemHolder.removeItem.setOnClickListener(auxView -> {
+            //TODO: elimina item-ul din lista cand butonul de remove este apasat!
+        });
         return view;
     }
 
