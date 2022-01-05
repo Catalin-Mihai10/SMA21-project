@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.upt.cti.aplicatiecomandat.Constants.Constants;
 
+import java.util.ArrayList;
+
 public class ShipmentActivity extends AppCompatActivity {
 
     private EditText tPhone;
@@ -18,6 +20,12 @@ public class ShipmentActivity extends AppCompatActivity {
     private Spinner localSpinner;
     private Spinner countySpinner;
     private Button repayment, card, back;
+
+    //TODO: populate arrayLists with names
+    ArrayList<String> localNames = new ArrayList<String>(){{
+        add("");
+    }};
+    ArrayList<String> countyNames = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +40,9 @@ public class ShipmentActivity extends AppCompatActivity {
         repayment = findViewById(Constants.REPAYMENT_BUTTON);
         card = findViewById(Constants.CARD_BUTTON);
         back = findViewById(Constants.BACK_BUTTON);
+
+        populateLocalSpinner();
+        populateCountySpinner();
 
         createRepaymentListener();
         createCardListener();
@@ -56,11 +67,18 @@ public class ShipmentActivity extends AppCompatActivity {
         back.setOnClickListener(view -> {
             tPhone.setText(Constants.EMPTY_STRING);
             tAddress.setText(Constants.EMPTY_STRING);
-
-            //nush ce fac metodele.Verifica maine
             localSpinner.clearFocus();
             countySpinner.clearFocus();
             finish();
         });
+    }
+
+    //TODO: populate spinners
+    public void populateLocalSpinner(){
+
+    }
+
+    public void populateCountySpinner(){
+
     }
 }

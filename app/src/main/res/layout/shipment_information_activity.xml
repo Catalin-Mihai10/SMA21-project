@@ -10,10 +10,6 @@
         android:id="@+id/textView"
         android:layout_width="285dp"
         android:layout_height="40dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="320dp"
-        android:layout_marginEnd="39dp"
-        android:layout_marginBottom="380dp"
         android:background="#FFFFFF"
         android:gravity="center"
         android:text="Alege metoda de plata"
@@ -22,35 +18,31 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.468" />
 
     <Button
         android:id="@+id/cardButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="186dp"
-        android:layout_marginTop="398dp"
-        android:layout_marginEnd="86dp"
-        android:layout_marginBottom="294dp"
         android:background="#FFFFFF"
         android:text="CARD"
         android:textColor="#CD5E5E"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.691"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.575"
         tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="474dp"
-        android:layout_marginEnd="136dp"
-        android:layout_marginBottom="218dp"
         android:background="#FFFFFF"
         android:text="BACK"
         android:textColor="#CD5E5E"
@@ -59,24 +51,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.684"
         tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/rambursButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="86dp"
-        android:layout_marginTop="398dp"
-        android:layout_marginEnd="186dp"
-        android:layout_marginBottom="294dp"
         android:background="#FFFFFF"
         android:text="RAMBURS"
         android:textColor="#CD5E5E"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.316"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.575"
         tools:ignore="TextContrastCheck" />
 
     <EditText
@@ -90,9 +81,13 @@
         android:textAlignment="center"
         android:textColor="#CD5E5E"
         android:textColorHint="#CD5E5E"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="163dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/tPhone"
@@ -105,38 +100,38 @@
         android:textAlignment="center"
         android:textColor="#CD5E5E"
         android:textColorHint="#CD5E5E"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="68dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.146"
+        tools:ignore="MissingConstraints" />
 
     <Spinner
         android:id="@+id/localitateSpinner"
         android:layout_width="111dp"
         android:layout_height="48dp"
-        android:layout_marginStart="214dp"
-        android:layout_marginTop="248dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="447dp"
         android:background="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.851"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.355"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Spinner
         android:id="@+id/JudetSpinner"
         android:layout_width="111dp"
         android:layout_height="48dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="248dp"
-        android:layout_marginEnd="213dp"
-        android:layout_marginBottom="447dp"
         android:background="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.356"
         tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

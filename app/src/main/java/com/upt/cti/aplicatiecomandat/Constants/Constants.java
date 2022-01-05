@@ -61,6 +61,8 @@ public class Constants {
 
     //CardActivity Constants
     public static final String CARD_TAG = "CardActivity";
+    public static final int CARD_FORM = R.id.cardForm;
+    public static final int BUY_BUTTON = R.id.buyButton;
 
     //Universal Constants
     public static final String EMPTY_STRING = "";
