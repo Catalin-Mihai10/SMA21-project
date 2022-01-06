@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.upt.cti.aplicatiecomandat.Constants.Constants;
+import com.upt.cti.aplicatiecomandat.Handlers.CommandHandler;
 import com.upt.cti.aplicatiecomandat.Modules.ClientModule;
 import com.upt.cti.aplicatiecomandat.Test.CreateProductsAndStoreThem;
 
@@ -35,7 +36,6 @@ public class AuthenticationActivity extends AppCompatActivity {
         instance.initialize();
 
         initializeFields();
-
         createRegistrationListener();
         createLogInListener();
     }
@@ -55,7 +55,10 @@ public class AuthenticationActivity extends AppCompatActivity {
             ClientModule client = new ClientModule(username.getText().toString(), password.getText().toString());
 
             client.logIn(data -> {
-                if(data) startActivity(new Intent(AuthenticationActivity.this, MainActivity.class));
+                if(data) {
+                    CommandHandler.saveUserInternally(client.getNewUser());
+                    startActivity(new Intent(AuthenticationActivity.this, MainActivity.class));
+                }
                 else{
                     Toast.makeText(AuthenticationActivity.this, "Username or password wrong!", Toast.LENGTH_SHORT).show();
                     Log.d(Constants.AUTHENTICATION_TAG, "Username or password wrong!");
@@ -63,4 +66,5 @@ public class AuthenticationActivity extends AppCompatActivity {
             });
         });
     }
+
 }

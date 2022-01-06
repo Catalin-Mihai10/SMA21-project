@@ -1,8 +1,6 @@
 package com.upt.cti.aplicatiecomandat;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.renderscript.ScriptGroup;
 import android.text.InputType;
 import android.view.Window;
 import android.widget.Button;
@@ -13,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.braintreepayments.cardform.view.CardForm;
 import com.upt.cti.aplicatiecomandat.Constants.Constants;
+import com.upt.cti.aplicatiecomandat.Handlers.CommandHandler;
+import com.upt.cti.aplicatiecomandat.Handlers.DataHandler;
 
 public class CardActivity extends AppCompatActivity {
 
@@ -57,8 +57,12 @@ public class CardActivity extends AppCompatActivity {
     public void createAlertDialog(){
         alertBuilder = new AlertDialog.Builder(CardActivity.this);
         alertBuilder.setTitle("Confirm before purchase");
+
+        String cardExpirationDate = "";
+        if(cardForm.getExpirationDateEditText().getText() != null) cardExpirationDate = cardForm.getExpirationDateEditText().getText().toString();
+
         alertBuilder.setMessage("Card number: " + cardForm.getCardNumber() + "\n" +
-                                "Card expiry date: " + cardForm.getExpirationDateEditText().getText().toString() + "\n" +
+                                "Card expiry date: " + cardExpirationDate + "\n" +
                                 "Card CVV: " + cardForm.getCvv() + "\n" +
                                 "Postal code: " + cardForm.getPostalCode() + "\n" +
                                 "Phone number: " + cardForm.getMobileNumber());
@@ -70,7 +74,16 @@ public class CardActivity extends AppCompatActivity {
     public void createPositiveButton(){
         alertBuilder.setPositiveButton("Confirm", (dialogInterface, i) -> {
             dialogInterface.dismiss();
-            Toast.makeText(CardActivity.this, "Thank you for purchase", Toast.LENGTH_LONG).show();
+            DataHandler dataHandler = new DataHandler();
+            CommandHandler.setPhone(cardForm.getMobileNumber());
+
+            if(dataHandler.processItemData(CommandHandler.getFinalCommand(), CommandHandler.getPurchaseInformation())){
+                Toast.makeText(CardActivity.this, "Thank you for purchase", Toast.LENGTH_LONG).show();
+                //CommandHandler.submitItemsForCommand();
+                finish();
+            }
+            else Toast.makeText(CardActivity.this, "Purchase failed", Toast.LENGTH_LONG).show();
+
         });
     }
 

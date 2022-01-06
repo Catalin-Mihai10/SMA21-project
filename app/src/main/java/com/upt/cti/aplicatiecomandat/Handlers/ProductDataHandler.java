@@ -1,6 +1,5 @@
 package com.upt.cti.aplicatiecomandat.Handlers;
 
-import android.provider.ContactsContract;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -18,7 +17,6 @@ import com.upt.cti.aplicatiecomandat.Utilities.Category;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class ProductDataHandler {
     private final DatabaseReference databaseReference;
@@ -37,7 +35,7 @@ public class ProductDataHandler {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 try{
-                    Log.d(Constants.PRODUCT_DATA_HANDLER_TAG, "iteram");
+                    Log.d(Constants.PRODUCT_DATA_HANDLER_TAG, "we iterate through the list of children");
                     for(DataSnapshot dataSnapshot : snapshot.getChildren()){
 
                         Double d = dataSnapshot.child("itemCost").getValue(Double.class);
@@ -59,7 +57,7 @@ public class ProductDataHandler {
 
                         if(String.valueOf(item.getItemCategory()).equals(String.valueOf(category))){
                             returnedItemsList.add(item);
-                            Log.d(Constants.PRODUCT_DATA_HANDLER_TAG, "adaugam item-ul in lista");
+                            Log.d(Constants.PRODUCT_DATA_HANDLER_TAG, "we add the item in the list");
                         }
 
                         dataIsLoaded.callback(true);

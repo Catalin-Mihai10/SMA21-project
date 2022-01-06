@@ -3,6 +3,7 @@ package com.upt.cti.aplicatiecomandat;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -10,8 +11,14 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.upt.cti.aplicatiecomandat.Constants.Constants;
+import com.upt.cti.aplicatiecomandat.DataTypes.CountriesAndLocales;
+import com.upt.cti.aplicatiecomandat.DataTypes.PurchaseInformation;
+import com.upt.cti.aplicatiecomandat.Handlers.CommandHandler;
+import com.upt.cti.aplicatiecomandat.Handlers.DataHandler;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Locale;
 
 public class ShipmentActivity extends AppCompatActivity {
 
@@ -20,12 +27,6 @@ public class ShipmentActivity extends AppCompatActivity {
     private Spinner localSpinner;
     private Spinner countySpinner;
     private Button repayment, card, back;
-
-    //TODO: populate arrayLists with names
-    ArrayList<String> localNames = new ArrayList<String>(){{
-        add("");
-    }};
-    ArrayList<String> countyNames = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +42,9 @@ public class ShipmentActivity extends AppCompatActivity {
         card = findViewById(Constants.CARD_BUTTON);
         back = findViewById(Constants.BACK_BUTTON);
 
-        populateLocalSpinner();
-        populateCountySpinner();
+        CountriesAndLocales countriesAndLocales = new CountriesAndLocales();
+        populateLocalSpinner(countriesAndLocales.getLocales());
+        populateCountySpinner(countriesAndLocales.getCountries());
 
         createRepaymentListener();
         createCardListener();
@@ -51,15 +53,20 @@ public class ShipmentActivity extends AppCompatActivity {
 
     public void createRepaymentListener(){
         repayment.setOnClickListener(view -> {
-            //TODO: goes back to MainActivity
+            CommandHandler.setPurchaseInformation(new PurchaseInformation(CommandHandler.getApplicationUser().getUserID(),
+                    tPhone.getText().toString(), tAddress.getText().toString(), "", ""));
+            DataHandler dataHandler = new DataHandler();
+            dataHandler.processItemData(CommandHandler.getFinalCommand(), CommandHandler.getPurchaseInformation());
             finish();
         });
     }
 
     public void createCardListener(){
         card.setOnClickListener(view -> {
-            //TODO: Opens a new activity
+            CommandHandler.setPurchaseInformation(new PurchaseInformation(CommandHandler.getApplicationUser().getUserID(),
+                    "", tAddress.getText().toString(), "", ""));
             startActivity(new Intent(ShipmentActivity.this, CardActivity.class));
+            finish();
         });
     }
 
@@ -74,11 +81,18 @@ public class ShipmentActivity extends AppCompatActivity {
     }
 
     //TODO: populate spinners
-    public void populateLocalSpinner(){
-
+    public void populateLocalSpinner(Locale[] locales){
+        ArrayAdapter<Locale[]> localeArrayAdapter = new ArrayAdapter<>(getApplicationContext(),
+                        android.R.layout.simple_spinner_dropdown_item, Collections.singletonList(locales));
+        localeArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        localSpinner.setAdapter(localeArrayAdapter);
     }
 
-    public void populateCountySpinner(){
+    public void populateCountySpinner(ArrayList<String> countries){
+        ArrayAdapter<String> countriesArrayAdapter = new ArrayAdapter<>(getApplicationContext(),
+                        android.R.layout.simple_spinner_dropdown_item, countries);
+        countriesArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        countySpinner.setAdapter(countriesArrayAdapter);
 
     }
 }

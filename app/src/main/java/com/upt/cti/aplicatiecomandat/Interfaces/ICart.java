@@ -7,8 +7,8 @@ import java.util.List;
 public interface ICart {
 
     boolean addItemToCart(Item item);
-    boolean removeItemFromCart(Item item);
-    boolean submitItemsOnCommand();
+    void removeItemFromCart(Item item);
+    void submitItemsOnCommand();
     List<Item> getCart();
 
 }

@@ -7,24 +7,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.upt.cti.aplicatiecomandat.AuthenticationActivity;
 import com.upt.cti.aplicatiecomandat.Constants.Constants;
 import com.upt.cti.aplicatiecomandat.DataTypes.Item;
 import com.upt.cti.aplicatiecomandat.Handlers.CommandHandler;
-import com.upt.cti.aplicatiecomandat.MainActivity;
-import com.upt.cti.aplicatiecomandat.R;
 
 import java.util.List;
 
 public class ItemAdapter extends ArrayAdapter<Item> {
 
-    private Context context;
-    private List<Item> items;
-    private int layoutResourceId;
+    private final Context context;
+    private final List<Item> items;
+    private final int layoutResourceId;
 
     public ItemAdapter(Context context, int layoutResourceId, List<Item> items){
         super(context, layoutResourceId,items);

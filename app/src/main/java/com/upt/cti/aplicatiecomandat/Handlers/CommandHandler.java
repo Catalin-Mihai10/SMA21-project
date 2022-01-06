@@ -4,38 +4,44 @@ import android.util.Log;
 
 import com.upt.cti.aplicatiecomandat.Constants.Constants;
 import com.upt.cti.aplicatiecomandat.DataTypes.Item;
+import com.upt.cti.aplicatiecomandat.DataTypes.PurchaseInformation;
 import com.upt.cti.aplicatiecomandat.DataTypes.User;
 import com.upt.cti.aplicatiecomandat.Interfaces.Callback;
-import com.upt.cti.aplicatiecomandat.Interfaces.ICommandHandler;
-import com.upt.cti.aplicatiecomandat.Modules.ClientModule;
-import com.upt.cti.aplicatiecomandat.ui.Cart;
+import com.upt.cti.aplicatiecomandat.DataTypes.Cart;
 
 import java.util.List;
 
-public class CommandHandler implements ICommandHandler {
+public class CommandHandler {
     private final static AuthenticationHandler authenticationHandler = new AuthenticationHandler();
-    private final static DataHandler dataHandler = new DataHandler();
     private final static Cart cart = new Cart();
+    private static User applicationUser = null;
+    private static PurchaseInformation purchaseInformation;
 
     public static boolean addToCart(Item item) {
         return cart.addItemToCart(item);
     }
 
-    public static boolean removeFromCart(Item item) {
+    public static void removeFromCart(Item item) {
         cart.removeItemFromCart(item);
-        return false;
+    }
+
+    public static void submitItemsForCommand(){
+        cart.submitItemsOnCommand();
     }
 
     public static List<Item> getCart(){
         return cart.getCart();
     }
 
-    public static boolean submitCommand(ClientModule client) {
-         dataHandler.proccesItemData(cart);
-         dataHandler.proccesUserData(client);
-         cart.submitItemsOnCommand();
-         return true;
+    public static void saveUserInternally(User user){
+        applicationUser = user;
     }
+
+    public static User getApplicationUser(){
+        return applicationUser;
+    }
+
+    public static Cart getFinalCommand(){ return cart;}
 
     public static void logIn(User user, Callback<Boolean> startMainActivity) {
         authenticationHandler.checkIfClientIsInDatabase(user, data -> {
@@ -55,20 +61,29 @@ public class CommandHandler implements ICommandHandler {
          });
     }
 
-    public static void printAllCommands() {}
-
-    public static void removeUser(User user) {
-        if(authenticationHandler.removeClientFromDatabase(user))
-            Log.d(Constants.COMMAND_HANDLER_TAG, "User removed successfully!");
-        else Log.d(Constants.COMMAND_HANDLER_TAG, "ERROR: User was not removed!");
+    public static void setPurchaseInformation(PurchaseInformation information){
+        purchaseInformation = information;
     }
 
-    public static void logOut(ClientModule client) {
-
+    public static PurchaseInformation getPurchaseInformation(){
+        return purchaseInformation;
     }
 
-    public static boolean changePassword(String currentPassword, String newPassword) {
-        return authenticationHandler.changePassword(currentPassword, newPassword);
+    public static void setPhone(String phone){
+        purchaseInformation.setPhone(phone);
     }
+
+    public static void setAddress(String address){
+        purchaseInformation.setAddress(address);
+    }
+
+    public static void setCountry(String country){
+        purchaseInformation.setCountry(country);
+    }
+
+    public static void setCity(String city){
+        purchaseInformation.setCity(city);
+    }
+
 
 }

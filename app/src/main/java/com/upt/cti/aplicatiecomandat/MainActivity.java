@@ -19,7 +19,6 @@ import com.upt.cti.aplicatiecomandat.Utilities.ItemAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class MainActivity extends AppCompatActivity {
     private Button logOut;
@@ -73,9 +72,7 @@ public class MainActivity extends AppCompatActivity {
     public void createCartListener(){ cart.setOnClickListener(view ->  startActivity(new Intent(MainActivity.this, CartActivity.class)));}
 
     public void createFloursListener(){
-        flours.setOnClickListener(view -> {
-            loadAdapter(Category.CEREALS);
-        });
+        flours.setOnClickListener(view -> loadAdapter(Category.CEREALS));
     }
 
     private void loadAdapter(Category category) {
@@ -92,33 +89,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createLactateListener(){
-        lactate.setOnClickListener(view -> {
-            loadAdapter(Category.LACTATE);
-        });
+        lactate.setOnClickListener(view -> loadAdapter(Category.LACTATE));
     }
 
     public void createFruitsListener(){
-        fruits.setOnClickListener(view -> {
-            loadAdapter(Category.FRUITS);
-        });
+        fruits.setOnClickListener(view -> loadAdapter(Category.FRUITS));
     }
 
     public void createVegetablesListener(){
-        vegetables.setOnClickListener(view -> {
-            loadAdapter(Category.VEGETABLES);
-        });
+        vegetables.setOnClickListener(view -> loadAdapter(Category.VEGETABLES));
     }
 
     public void createAnimalsListener(){
-        animals.setOnClickListener(view -> {
-            loadAdapter(Category.ANIMAL_PRODUCTS);
-        });
+        animals.setOnClickListener(view -> loadAdapter(Category.ANIMAL_PRODUCTS));
     }
 
     public void createOilsListener(){
-        oils.setOnClickListener(view -> {
-            loadAdapter(Category.OILS);
-        });
+        oils.setOnClickListener(view -> loadAdapter(Category.OILS));
     }
 
     public void loadListOfOffers(){

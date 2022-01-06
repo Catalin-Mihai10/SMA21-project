@@ -10,14 +10,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.upt.cti.aplicatiecomandat.Constants.Constants;
 import com.upt.cti.aplicatiecomandat.DataTypes.Item;
+import com.upt.cti.aplicatiecomandat.Handlers.CommandHandler;
 
 import java.util.List;
 
 public class CartItemAdapter extends ArrayAdapter<Item> {
 
-    private Context context;
-    private List<Item> items;
-    private int layoutResourceId;
+    private final Context context;
+    private final List<Item> items;
+    private final int layoutResourceId;
 
     public CartItemAdapter(Context context, int layoutResourceId, List<Item> items){
         super(context, layoutResourceId,items);
@@ -55,7 +56,9 @@ public class CartItemAdapter extends ArrayAdapter<Item> {
         String cost = item.getItemCost() + " LEI";
         itemHolder.tCost.setText(cost);
         itemHolder.removeItem.setOnClickListener(auxView -> {
-            //TODO: elimina item-ul din lista cand butonul de remove este apasat!
+            CommandHandler.removeFromCart(item);
+            remove(item);
+            notifyDataSetChanged();
         });
         return view;
     }

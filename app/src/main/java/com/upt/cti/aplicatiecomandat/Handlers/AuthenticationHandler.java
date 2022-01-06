@@ -105,7 +105,6 @@ public class AuthenticationHandler implements IAuthenticationHandler {
         });
     }
 
-    @Override
     public boolean removeClientFromDatabase(User user) {
         DatabaseReference deletingDatabaseReference;
 
@@ -123,7 +122,6 @@ public class AuthenticationHandler implements IAuthenticationHandler {
         return true;
     }
 
-    @Override
     public boolean changePassword(String currentPassword, String newPassword) {
         final boolean[] passwordChanged = {false};
 

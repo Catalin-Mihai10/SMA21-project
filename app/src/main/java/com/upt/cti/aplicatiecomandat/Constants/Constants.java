@@ -89,4 +89,7 @@ public class Constants {
     public static final int CART_ITEM_COST_FIELD = R.id.cartTCost;
     public static final int CART_ITEM_QUANTITY_FIELD = R.id.tCantitate;
     public static final int REMOVE_ITEM_FROM_CART_BUTTON = R.id.removeButton;
+
+    //DataHandler Constants
+    public static final String CHILD_COMMAND = "commands";
 }

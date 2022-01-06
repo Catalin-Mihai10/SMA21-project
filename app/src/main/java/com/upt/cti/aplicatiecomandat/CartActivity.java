@@ -11,14 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.upt.cti.aplicatiecomandat.Constants.Constants;
 import com.upt.cti.aplicatiecomandat.Handlers.CommandHandler;
 import com.upt.cti.aplicatiecomandat.Utilities.CartItemAdapter;
-import com.upt.cti.aplicatiecomandat.Utilities.ItemAdapter;
 
 public class CartActivity extends AppCompatActivity {
 
     private ListView cartListView;
     private Button submitCommand;
     private Button cancelCommand;
-    private CartItemAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +34,7 @@ public class CartActivity extends AppCompatActivity {
     }
 
     public void loadCartData(){
-        adapter = new CartItemAdapter(CartActivity.this, Constants.CART_ITEM_LAYOUT, CommandHandler.getCart());
+        CartItemAdapter adapter = new CartItemAdapter(CartActivity.this, Constants.CART_ITEM_LAYOUT, CommandHandler.getCart());
         cartListView.setAdapter(adapter);
     }
 
@@ -48,8 +46,6 @@ public class CartActivity extends AppCompatActivity {
     }
 
     public void createCancelCommandListener(){
-        cancelCommand.setOnClickListener(view -> {
-            finish();
-        });
+        cancelCommand.setOnClickListener(view -> finish());
     }
 }
