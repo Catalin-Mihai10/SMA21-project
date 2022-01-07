@@ -5,23 +5,26 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    card_view:cardBackgroundColor="#D7DDDD"
+    card_view:cardBackgroundColor="#FFFFFF"
     card_view:cardCornerRadius="4dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="4dp" >
+        android:padding="4dp">
 
         <Button
             android:id="@+id/removeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:background="#FFFFFF"
+            android:drawableStart="@drawable/ic_bin_24"
             android:minHeight="48dp"
-            android:text="REMOVE"
-            android:textColor="#CD5E5E"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:paddingStart="35dp"
+            android:paddingEnd="35dp"
+            android:textColor="#24755A"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/tCantitate"
@@ -33,8 +36,8 @@
             android:layout_marginRight="123dp"
             android:layout_marginBottom="11dp"
             android:hint="Cantitate"
-            android:textColor="#CD5E5E"
-            android:textColorHint="#CD5E5E"
+            android:textColor="#24755A"
+            android:textColorHint="#24755A"
             android:textSize="10sp" />
 
         <TextView
@@ -47,8 +50,8 @@
             android:layout_marginLeft="152dp"
             android:layout_marginBottom="11dp"
             android:hint="Cost"
-            android:textColor="#CD5E5E"
-            android:textColorHint="#CD5E5E"
+            android:textColor="#24755A"
+            android:textColorHint="#24755A"
             android:textSize="10sp" />
 
         <TextView
@@ -60,8 +63,8 @@
             android:layout_marginLeft="35dp"
             android:layout_marginBottom="11dp"
             android:hint="Name"
-            android:textColor="#CD5E5E"
-            android:textColorHint="#CD5E5E"
+            android:textColor="#752424"
+            android:textColorHint="#24755A"
             android:textSize="10sp" />
     </RelativeLayout>
 

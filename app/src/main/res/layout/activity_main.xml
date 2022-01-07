@@ -4,168 +4,120 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EFE9E9"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/appBar"
-        android:layout_width="364dp"
-        android:layout_height="69dp"
-        android:background="#CD5E5E"
+    <ListView
+        android:id="@+id/offersListView"
+        android:layout_width="249dp"
+        android:layout_height="615dp"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="98dp"
+        android:layout_height="706dp"
+        android:layout_marginEnd="259dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/floursButton"
+            android:layout_width="96dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#752424"
+            android:text="FAINA"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/lactateButton"
+            android:layout_width="96dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#752424"
+            android:text="LACTATE"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/vegetablesButton"
+            android:layout_width="96dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#752424"
+            android:text="LEGUME"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/fruitsButton"
+            android:layout_width="96dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#752424"
+            android:text="FRUCTE"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/meatsButton"
+            android:layout_width="96dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#752424"
+            android:text="CARNURI"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/oilsButton"
+            android:layout_width="96dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#752424"
+            android:text="ULEIURI"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="263dp"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
         <Button
             android:id="@+id/cartButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="244dp"
-            android:layout_marginBottom="11dp"
-            android:text="GO TO CART"
-            android:textColor="#CD5E5E"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#752424"
+            android:drawableStart="@drawable/ic_shopping_cart_24"
+            android:paddingStart="10dp"
+            android:text="MERGI LA COS"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/logOutButton"
-            android:layout_width="103dp"
-            android:layout_height="54dp"
-            android:layout_marginStart="245dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:text="LOG OUT"
-            android:textColor="#CD5E5E"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="TextContrastCheck" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/meniuConstraint"
-        android:layout_width="97dp"
-        android:layout_height="667dp"
-        android:layout_marginTop="73dp"
-        android:layout_marginEnd="263dp"
-        android:background="#CD5E5E"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:context=".MainActivity">
-
-        <TextView
-            android:id="@+id/tUlei"
-            android:layout_width="78dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="2dp"
-            android:gravity="center"
-            android:text="Uleiuri"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tAnimale" />
-
-        <TextView
-            android:id="@+id/tAnimale"
-            android:layout_width="78dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="2dp"
-            android:gravity="center"
-            android:text="Animale"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/tUlei"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tFructe" />
-
-        <TextView
-            android:id="@+id/tFructe"
-            android:layout_width="78dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="2dp"
-            android:gravity="center"
-            android:text="Fructe"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/tAnimale"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tLegume" />
-
-        <TextView
-            android:id="@+id/tLegume"
-            android:layout_width="78dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="2dp"
-            android:gravity="center"
-            android:text="Legume"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/tFructe"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tLactate" />
-
-        <TextView
-            android:id="@+id/tLactate"
-            android:layout_width="78dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="2dp"
-            android:gravity="center"
-            android:text="lactate"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/tLegume"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tFainoase" />
-
-        <TextView
-            android:id="@+id/tFainoase"
-            android:layout_width="78dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="2dp"
-            android:gravity="center"
-            android:text="Fainoase"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/tLactate"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ListView
-        android:id="@+id/offersListView"
-        android:layout_width="250dp"
-        android:layout_height="647dp"
-        android:layout_marginStart="96dp"
-        android:layout_marginEnd="6dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.872"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.827" />
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#752424"
+            android:text="DECONECTARE"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

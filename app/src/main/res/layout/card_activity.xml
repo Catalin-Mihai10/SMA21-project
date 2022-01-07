@@ -3,18 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#752424">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F3F1F1"
+        android:background="#752424"
         android:orientation="vertical">
 
         <com.braintreepayments.cardform.view.CardForm
             android:id="@+id/cardForm"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF" />
 
         <Button
             android:id="@+id/buyButton"
@@ -22,12 +24,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="50dp"
             android:layout_marginRight="40dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/ic_rounded_shapes"
-            android:text="SUBMIT PAYMENT"
-            android:textColor="#CD5E5E"
+            android:text="APROBA PLATA"
+            android:textColor="#752424"
             tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
 

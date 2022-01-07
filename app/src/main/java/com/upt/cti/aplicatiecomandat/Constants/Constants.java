@@ -34,12 +34,12 @@ public class Constants {
     //MainActivity Constants
     public static final String MAIN_TAG = "MainActivity";
     public static final int LOGOUT_BUTTON = R.id.logOutButton;
-    public static final int FLOURS_BUTTON = R.id.tFainoase;
-    public static final int LACTATE_BUTTON = R.id.tLactate;
-    public static final int VEGETABLES_BUTTON = R.id.tFainoase;
-    public static final int FRUITS_BUTTON = R.id.tLactate;
-    public static final int ANIMALS_BUTTON = R.id.tFainoase;
-    public static final int OILS_BUTTON = R.id.tLactate;
+    public static final int FLOURS_BUTTON = R.id.floursButton;
+    public static final int LACTATE_BUTTON = R.id.lactateButton;
+    public static final int VEGETABLES_BUTTON = R.id.vegetablesButton;
+    public static final int FRUITS_BUTTON = R.id.fruitsButton;
+    public static final int ANIMALS_BUTTON = R.id.meatsButton;
+    public static final int OILS_BUTTON = R.id.oilsButton;
     public static final int OFFERS_VIEW = R.id.offersListView;
     public static final int CART_BUTTON = R.id.cartButton;
 
@@ -63,6 +63,9 @@ public class Constants {
     public static final String CARD_TAG = "CardActivity";
     public static final int CARD_FORM = R.id.cardForm;
     public static final int BUY_BUTTON = R.id.buyButton;
+
+    //RequestDataModule Constants
+    public static final String REQUEST_DATA_MODULE_TAG = "RequestDataModule";
 
     //Universal Constants
     public static final String EMPTY_STRING = "";
