@@ -39,7 +39,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#752424"
-            android:text="FAINA"
+            android:text="FĂINĂ"
             android:textColor="#FFFFFF" />
 
         <Button
@@ -75,7 +75,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#752424"
-            android:text="CARNURI"
+            android:text="CĂRNURI"
             android:textColor="#FFFFFF" />
 
         <Button
@@ -85,6 +85,15 @@
             android:layout_weight="1"
             android:background="#752424"
             android:text="ULEIURI"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/offersButton"
+            android:layout_width="96dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#752424"
+            android:text="OFERTE"
             android:textColor="#FFFFFF" />
     </LinearLayout>
 
@@ -107,7 +116,7 @@
             android:background="#752424"
             android:drawableStart="@drawable/ic_shopping_cart_24"
             android:paddingStart="10dp"
-            android:text="MERGI LA COS"
+            android:text="MERGI LA COȘ"
             android:textColor="#FFFFFF" />
 
         <Button

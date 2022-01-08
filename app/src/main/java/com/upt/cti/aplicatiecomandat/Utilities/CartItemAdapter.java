@@ -1,5 +1,6 @@
 package com.upt.cti.aplicatiecomandat.Utilities;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -28,6 +29,7 @@ public class CartItemAdapter extends ArrayAdapter<Item> {
         this.layoutResourceId = layoutResourceId;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ItemHolder itemHolder;
@@ -52,7 +54,8 @@ public class CartItemAdapter extends ArrayAdapter<Item> {
         final Item item = items.get(position);
 
         itemHolder.tName.setText(item.getItemName());
-        itemHolder.tCantitate.setText(item.getItemProvider());
+        String quantity = "Cantitate: " + item.getQuantity();
+        itemHolder.tCantitate.setText(quantity);
         String cost = item.getItemCost() + " LEI";
         itemHolder.tCost.setText(cost);
         itemHolder.removeItem.setOnClickListener(auxView -> {

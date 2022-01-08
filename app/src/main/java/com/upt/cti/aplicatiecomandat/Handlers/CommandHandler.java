@@ -1,8 +1,5 @@
 package com.upt.cti.aplicatiecomandat.Handlers;
 
-import android.util.Log;
-
-import com.upt.cti.aplicatiecomandat.Constants.Constants;
 import com.upt.cti.aplicatiecomandat.DataTypes.Item;
 import com.upt.cti.aplicatiecomandat.DataTypes.PurchaseInformation;
 import com.upt.cti.aplicatiecomandat.DataTypes.User;
@@ -46,18 +43,14 @@ public class CommandHandler {
     public static void logIn(User user, Callback<Boolean> startMainActivity) {
         authenticationHandler.checkIfClientIsInDatabase(user, data -> {
             if(data) startMainActivity.callback(true);
+            else startMainActivity.callback(false);
         });
     }
 
     public static void register(User user, Callback<Boolean> checkIfUserAlreadyExists) {
         authenticationHandler.addClientInDatabase(user, data -> {
-             if(data) {
-                 checkIfUserAlreadyExists.callback(true);
-                 Log.d(Constants.COMMAND_HANDLER_TAG, "User added successfully!");
-             }
-             else{
-                 Log.d(Constants.COMMAND_HANDLER_TAG, "User already exists!");
-             }
+             if(data) checkIfUserAlreadyExists.callback(true);
+             else checkIfUserAlreadyExists.callback(false);
          });
     }
 

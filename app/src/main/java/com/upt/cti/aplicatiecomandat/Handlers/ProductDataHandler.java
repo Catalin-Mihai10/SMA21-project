@@ -29,13 +29,11 @@ public class ProductDataHandler {
 
     public List<Item> loadProductsFromDataBase(Category category, Callback<Boolean> dataIsLoaded){
         List<Item> returnedItemsList = new ArrayList<>();
-        Log.d(Constants.PRODUCT_DATA_HANDLER_TAG, "category:" + category.toString());
 
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 try{
-                    Log.d(Constants.PRODUCT_DATA_HANDLER_TAG, "we iterate through the list of children");
                     for(DataSnapshot dataSnapshot : snapshot.getChildren()){
 
                         Double d = dataSnapshot.child("itemCost").getValue(Double.class);
@@ -55,15 +53,12 @@ public class ProductDataHandler {
                         if(databaseId != null) itemId = databaseId;
                         item.setItemId(itemId);
 
-                        if(String.valueOf(item.getItemCategory()).equals(String.valueOf(category))){
-                            returnedItemsList.add(item);
-                            Log.d(Constants.PRODUCT_DATA_HANDLER_TAG, "we add the item in the list");
-                        }
+                        if(String.valueOf(item.getItemCategory()).equals(String.valueOf(category))) returnedItemsList.add(item);
+
 
                         dataIsLoaded.callback(true);
                     }
                 }catch(Exception e){
-                    Log.d(Constants.PRODUCT_DATA_HANDLER_TAG, "ERROR: in " + Constants.PRODUCT_DATA_HANDLER_TAG + " at loading items from database!");
                     e.printStackTrace();
                     dataIsLoaded.callback(false);
                 }

@@ -11,6 +11,7 @@ public class Item {
     private double cost;
     private String provider;
     private Category category;
+    private int quantity = 0;
 
     public Item(){}
 
@@ -39,6 +40,14 @@ public class Item {
     }
 
     public void setItemId(int itemID){ this.itemId = itemID; }
+
+    public void setQuantity(int quantity){
+        this.quantity = quantity;
+    }
+
+    public int getQuantity(){
+        return quantity;
+    }
 
     @Override
     public boolean equals(Object object){

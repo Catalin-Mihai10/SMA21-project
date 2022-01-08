@@ -28,7 +28,7 @@
             android:layout_marginRight="40dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/ic_rounded_shapes"
-            android:text="APROBA PLATA"
+            android:text="APROBĂ PLATA"
             android:textColor="#752424"
             tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>

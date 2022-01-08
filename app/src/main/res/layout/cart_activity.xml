@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#FFFFFF"
-        android:text="COMANDA"
+        android:text="COMANDĂ"
         android:textColor="#752424"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"

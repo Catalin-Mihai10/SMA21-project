@@ -2,7 +2,6 @@ package com.upt.cti.aplicatiecomandat;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.upt.cti.aplicatiecomandat.Constants.Constants;
 import com.upt.cti.aplicatiecomandat.Handlers.CommandHandler;
 import com.upt.cti.aplicatiecomandat.Modules.ClientModule;
-import com.upt.cti.aplicatiecomandat.Test.CreateProductsAndStoreThem;
 
 public class AuthenticationActivity extends AppCompatActivity {
     private EditText username;
@@ -32,9 +30,6 @@ public class AuthenticationActivity extends AppCompatActivity {
         register = findViewById(Constants.REGISTER_BUTTON);
         login = findViewById(Constants.LOGIN_BUTTON);
 
-        CreateProductsAndStoreThem instance = new CreateProductsAndStoreThem();
-        instance.initialize();
-
         initializeFields();
         createRegistrationListener();
         createLogInListener();
@@ -51,19 +46,18 @@ public class AuthenticationActivity extends AppCompatActivity {
 
     public void createLogInListener(){
         login.setOnClickListener(view -> {
+            if(!username.getText().toString().equals(Constants.EMPTY_STRING) &&  !password.getText().toString().equals(Constants.EMPTY_STRING)){
+                ClientModule client = new ClientModule(username.getText().toString(), password.getText().toString());
 
-            ClientModule client = new ClientModule(username.getText().toString(), password.getText().toString());
+                client.logIn(data -> {
+                    if(data) {
+                        CommandHandler.saveUserInternally(client.getNewUser());
+                        startActivity(new Intent(AuthenticationActivity.this, MainActivity.class));
+                    }
+                    else Toast.makeText(AuthenticationActivity.this, Constants.USER_WARNING_MESSAGE, Toast.LENGTH_SHORT).show();
 
-            client.logIn(data -> {
-                if(data) {
-                    CommandHandler.saveUserInternally(client.getNewUser());
-                    startActivity(new Intent(AuthenticationActivity.this, MainActivity.class));
-                }
-                else{
-                    Toast.makeText(AuthenticationActivity.this, "Username or password wrong!", Toast.LENGTH_SHORT).show();
-                    Log.d(Constants.AUTHENTICATION_TAG, "Username or password wrong!");
-                }
-            });
+                });
+            } else Toast.makeText(AuthenticationActivity.this, Constants.EMPTY_FIELDS_WARNING_MESSAGE, Toast.LENGTH_SHORT).show();
         });
     }
 

@@ -29,20 +29,26 @@ public class DataHandler {
         FirebaseDatabase database = FirebaseDatabase.getInstance(Constants.DATABASE_URL);
         DatabaseReference databaseReference = database.getReference();
         boolean writeOperation = true;
+        double totalCost = 0.00;
 
         try {
             databaseReference.child(Constants.CHILD_COMMAND).child(String.valueOf(purchaseID)).child("user").setValue(purchaseInformation.getUser());
             databaseReference.child(Constants.CHILD_COMMAND).child(String.valueOf(purchaseID)).child("phone").setValue(purchaseInformation.getPhone());
             databaseReference.child(Constants.CHILD_COMMAND).child(String.valueOf(purchaseID)).child("address").setValue(purchaseInformation.getAddress());
-            databaseReference.child(Constants.CHILD_COMMAND).child(String.valueOf(purchaseID)).child("country").setValue(purchaseInformation.getCountry());
+            databaseReference.child(Constants.CHILD_COMMAND).child(String.valueOf(purchaseID)).child("state").setValue(purchaseInformation.getCountry());
             databaseReference.child(Constants.CHILD_COMMAND).child(String.valueOf(purchaseID)).child("city").setValue(purchaseInformation.getCity());
 
             for (Item item : cart.getCart()) {
-                databaseReference.child(Constants.CHILD_COMMAND).child(String.valueOf(purchaseID))
+                databaseReference.child(Constants.CHILD_COMMAND).child(String.valueOf(purchaseID)).child(Constants.CHILD_ITEMS)
                         .child(item.getItemId()).child("name").setValue(item.getItemName());
-                databaseReference.child(Constants.CHILD_COMMAND).child(String.valueOf(purchaseID))
+                databaseReference.child(Constants.CHILD_COMMAND).child(String.valueOf(purchaseID)).child(Constants.CHILD_ITEMS)
                         .child(item.getItemId()).child("cost").setValue(item.getItemCost());
+                databaseReference.child(Constants.CHILD_COMMAND).child(String.valueOf(purchaseID)).child(Constants.CHILD_ITEMS)
+                        .child(item.getItemId()).child("cantitate").setValue(item.getQuantity());
+                totalCost +=item.getItemCost();
             }
+
+            databaseReference.child(Constants.CHILD_COMMAND).child(String.valueOf(purchaseID)).child("total").setValue(totalCost);
         }catch (Exception e){
             writeOperation = false;
         }

@@ -1,9 +1,7 @@
 package com.upt.cti.aplicatiecomandat;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -11,34 +9,24 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.firebase.installations.Utils;
-import com.google.gson.Gson;
 import com.upt.cti.aplicatiecomandat.Constants.Constants;
 import com.upt.cti.aplicatiecomandat.DataTypes.PurchaseInformation;
-import com.upt.cti.aplicatiecomandat.DataTypes.State;
+import com.upt.cti.aplicatiecomandat.DataTypes.StatesAndCities;
 import com.upt.cti.aplicatiecomandat.Handlers.CommandHandler;
 import com.upt.cti.aplicatiecomandat.Handlers.DataHandler;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ShipmentActivity extends AppCompatActivity {
 
     private EditText tPhone;
     private EditText tAddress;
-    private Spinner localSpinner;
+    private Spinner citySpinner;
     private Spinner stateSpinner;
     private Button repayment, card, back;
-    private ArrayList<State> states;
+    private StatesAndCities statesAndCities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,33 +36,16 @@ public class ShipmentActivity extends AppCompatActivity {
 
         tPhone = findViewById(Constants.PHONE_FIELD);
         tAddress = findViewById(Constants.ADDRESS_FIELD);
-        localSpinner = findViewById(Constants.LOCAL_SPINNER);
+        citySpinner = findViewById(Constants.LOCAL_SPINNER);
         stateSpinner = findViewById(Constants.COUNTY_SPINNER);
         repayment = findViewById(Constants.REPAYMENT_BUTTON);
         card = findViewById(Constants.CARD_BUTTON);
         back = findViewById(Constants.BACK_BUTTON);
+        statesAndCities = new StatesAndCities();
 
-        try {
-            loadDataFromJson();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        populateCountySpinner(states);
-
-        stateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String selectedState  = stateSpinner.getSelectedItem().toString();
-                populateLocalSpinner(states, selectedState);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
+        populateCountySpinner();
+        createStateSpinnerListener();
+        createCitySpinnerListener();
         createRepaymentListener();
         createCardListener();
         createBackListener();
@@ -83,20 +54,25 @@ public class ShipmentActivity extends AppCompatActivity {
 
     public void createRepaymentListener(){
         repayment.setOnClickListener(view -> {
-            CommandHandler.setPurchaseInformation(new PurchaseInformation(CommandHandler.getApplicationUser().getUserID(),
-                    tPhone.getText().toString(), tAddress.getText().toString(), "", ""));
-            DataHandler dataHandler = new DataHandler();
-            dataHandler.processItemData(CommandHandler.getFinalCommand(), CommandHandler.getPurchaseInformation());
-            finish();
+            if(!tPhone.getText().toString().equals(Constants.EMPTY_STRING) &&  !tAddress.getText().toString().equals(Constants.EMPTY_STRING)){
+                CommandHandler.setPurchaseInformation(new PurchaseInformation(CommandHandler.getApplicationUser().getUserID(),
+                        tPhone.getText().toString(), tAddress.getText().toString(), stateSpinner.getSelectedItem().toString(), citySpinner.getSelectedItem().toString()));
+                DataHandler dataHandler = new DataHandler();
+                dataHandler.processItemData(CommandHandler.getFinalCommand(), CommandHandler.getPurchaseInformation());
+                finish();
+            } else Toast.makeText(ShipmentActivity.this, Constants.EMPTY_FIELDS_WARNING_MESSAGE, Toast.LENGTH_SHORT).show();
         });
     }
 
     public void createCardListener(){
         card.setOnClickListener(view -> {
-            CommandHandler.setPurchaseInformation(new PurchaseInformation(CommandHandler.getApplicationUser().getUserID(),
-                    "", tAddress.getText().toString(), "", ""));
-            startActivity(new Intent(ShipmentActivity.this, CardActivity.class));
-            finish();
+
+            if(!tPhone.getText().toString().equals(Constants.EMPTY_STRING) &&  !tAddress.getText().toString().equals(Constants.EMPTY_STRING)){
+                CommandHandler.setPurchaseInformation(new PurchaseInformation(CommandHandler.getApplicationUser().getUserID(),
+                        tPhone.getText().toString(), tAddress.getText().toString(), stateSpinner.getSelectedItem().toString(), citySpinner.getSelectedItem().toString()));
+                startActivity(new Intent(ShipmentActivity.this, CardActivity.class));
+                finish();
+            } else Toast.makeText(ShipmentActivity.this, Constants.EMPTY_FIELDS_WARNING_MESSAGE, Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -104,63 +80,63 @@ public class ShipmentActivity extends AppCompatActivity {
         back.setOnClickListener(view -> {
             tPhone.setText(Constants.EMPTY_STRING);
             tAddress.setText(Constants.EMPTY_STRING);
-            localSpinner.clearFocus();
+            citySpinner.clearFocus();
             stateSpinner.clearFocus();
             finish();
         });
     }
 
-    //TODO: populate spinners
-    public void populateLocalSpinner(ArrayList<State> states, String selectedState){
+    public void populateLocalSpinner(String selectedState){
         ArrayList<String> cityNames = new ArrayList<>();
-        for(State state : states)
-            if(state.getStateName().equals(selectedState))
-                cityNames.add(state.getCity());
+        statesAndCities.getCities().forEach((state, city) -> {
+            if(state.equals(selectedState)) cityNames.add(city);
+        });
 
         ArrayAdapter<String> localeArrayAdapter = new ArrayAdapter<>(getApplicationContext(),
                         android.R.layout.simple_spinner_dropdown_item, cityNames);
         localeArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        localSpinner.setAdapter(localeArrayAdapter);
+        citySpinner.setAdapter(localeArrayAdapter);
     }
 
-    public void populateCountySpinner(ArrayList<State> states){
-        ArrayList<String> statesNames = new ArrayList<>();
-        for(State state : states)
-            statesNames.add(state.getStateName());
-
+    public void populateCountySpinner(){
         ArrayAdapter<String> countriesArrayAdapter = new ArrayAdapter<>(getApplicationContext(),
-                        android.R.layout.simple_spinner_dropdown_item, statesNames);
+                        android.R.layout.simple_spinner_dropdown_item, statesAndCities.getStates());
         countriesArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         stateSpinner.setAdapter(countriesArrayAdapter);
 
     }
 
+    public void createStateSpinnerListener(){
+        stateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(stateSpinner.getSelectedItem() != null){
+                    String selectedState  = stateSpinner.getSelectedItem().toString();
+                    populateLocalSpinner(selectedState);
+                }
+            }
 
-    public void loadDataFromJson() throws FileNotFoundException {
-        String PATH = getJsonFromAssets(getApplicationContext(), "localitati.json");
-        Log.d(Constants.SHIPMENT_TAG, PATH);
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
-        //BufferedReader bufferedReader = new BufferedReader(new FileReader("D:\\Proiect-SMA\\app\\src\\main\\assets\\localitati.json"));
-        State[] jsonStates = new Gson().fromJson(PATH, State[].class);
-        states = new ArrayList<>(Arrays.asList(jsonStates));
+            }
+        });
     }
 
-    static String getJsonFromAssets(Context context, String fileName) {
-        String jsonString;
-        try {
-            InputStream is = context.getAssets().open(fileName);
+    public void createCitySpinnerListener(){
+        citySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(citySpinner.getSelectedItem() != null){
+                    String selectedState  = citySpinner.getSelectedItem().toString();
+                    populateLocalSpinner(selectedState);
+                }
+            }
 
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
-            jsonString = new String(buffer, "UTF-8");
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-
-        return jsonString;
+            }
+        });
     }
 }

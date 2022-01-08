@@ -39,7 +39,7 @@ public class CardActivity extends AppCompatActivity {
                 .cvvRequired(true)
                 .postalCodeRequired(true)
                 .mobileNumberRequired(true)
-                .mobileNumberExplanation("SMS is required on this number")
+                .mobileNumberExplanation(Constants.MOBILE_NUMBER_EXPLANATION)
                 .setup(CardActivity.this);
 
         cardForm.getCvvEditText().setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_PASSWORD);
@@ -50,45 +50,44 @@ public class CardActivity extends AppCompatActivity {
             if(cardForm.isValid()){
                 createAlertDialog();
             }
-            else Toast.makeText(CardActivity.this, "You must complete all the fields!", Toast.LENGTH_LONG).show();
+            else Toast.makeText(CardActivity.this, Constants.EMPTY_FIELDS_WARNING_MESSAGE, Toast.LENGTH_LONG).show();
         });
     }
 
     public void createAlertDialog(){
         alertBuilder = new AlertDialog.Builder(CardActivity.this);
-        alertBuilder.setTitle("Confirm before purchase");
+        alertBuilder.setTitle(Constants.ALERT_DIALOG_TITLE);
 
-        String cardExpirationDate = "";
+        String cardExpirationDate = Constants.EMPTY_STRING;
         if(cardForm.getExpirationDateEditText().getText() != null) cardExpirationDate = cardForm.getExpirationDateEditText().getText().toString();
 
-        alertBuilder.setMessage("Card number: " + cardForm.getCardNumber() + "\n" +
-                                "Card expiry date: " + cardExpirationDate + "\n" +
-                                "Card CVV: " + cardForm.getCvv() + "\n" +
-                                "Postal code: " + cardForm.getPostalCode() + "\n" +
-                                "Phone number: " + cardForm.getMobileNumber());
+        alertBuilder.setMessage(Constants.NUMBER_FIELD + cardForm.getCardNumber() + Constants.NEW_LINE +
+                                Constants.CARD_EXPIRATION_DATE + cardExpirationDate + Constants.NEW_LINE +
+                                Constants.CARD_CVV + cardForm.getCvv() + Constants.NEW_LINE +
+                                Constants.POST_CODE + cardForm.getPostalCode() + Constants.NEW_LINE +
+                                Constants.PHONE_NUMBER + cardForm.getMobileNumber());
 
         createPositiveButton();
         createNegativeButton();
     }
 
     public void createPositiveButton(){
-        alertBuilder.setPositiveButton("Confirm", (dialogInterface, i) -> {
+        alertBuilder.setPositiveButton(Constants.CONFIRMATION, (dialogInterface, i) -> {
             dialogInterface.dismiss();
             DataHandler dataHandler = new DataHandler();
             CommandHandler.setPhone(cardForm.getMobileNumber());
 
             if(dataHandler.processItemData(CommandHandler.getFinalCommand(), CommandHandler.getPurchaseInformation())){
-                Toast.makeText(CardActivity.this, "Thank you for purchase", Toast.LENGTH_LONG).show();
-                //CommandHandler.submitItemsForCommand();
+                Toast.makeText(CardActivity.this, Constants.PURCHASE_SUCCESS_MESSAGE, Toast.LENGTH_LONG).show();
                 finish();
             }
-            else Toast.makeText(CardActivity.this, "Purchase failed", Toast.LENGTH_LONG).show();
+            else Toast.makeText(CardActivity.this, Constants.PURCHASE_WARNING_MESSAGE, Toast.LENGTH_LONG).show();
 
         });
     }
 
     public void createNegativeButton(){
-        alertBuilder.setNegativeButton("Cancel", (dialogInterface, i) -> dialogInterface.dismiss());
+        alertBuilder.setNegativeButton(Constants.CANCEL, (dialogInterface, i) -> dialogInterface.dismiss());
         AlertDialog alertDialog = alertBuilder.create();
         alertDialog.show();
     }

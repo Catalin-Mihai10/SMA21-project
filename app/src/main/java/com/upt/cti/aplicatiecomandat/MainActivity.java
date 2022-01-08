@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ListView;
@@ -29,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView vegetables;
     private TextView animals;
     private TextView oils;
+    private TextView offersButton;
     private ListView offers;
     private List<Item> items;
     private ProductDataHandler productDataHandler;
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         animals = findViewById(Constants.ANIMALS_BUTTON);
         oils = findViewById(Constants.OILS_BUTTON);
         offers = findViewById(Constants.OFFERS_VIEW);
+        offersButton = findViewById(Constants.OFFERS_BUTTON);
         items = new ArrayList<>();
 
         productDataHandler = new ProductDataHandler();
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         createVegetablesListener();
         createAnimalsListener();
         createOilsListener();
+        createOffersListener();
     }
 
     public void createLogOutListener(){
@@ -78,13 +80,10 @@ public class MainActivity extends AppCompatActivity {
     private void loadAdapter(Category category) {
         items = productDataHandler.loadProductsFromDataBase(category, data -> {
             if(data){
-                Log.d(Constants.MAIN_TAG, "cream un adapter nou");
                 adapter = new ItemAdapter(MainActivity.this, Constants.ITEM_LAYOUT, items);
                 offers.setAdapter(adapter);
             }
-            else {
-                Toast.makeText(MainActivity.this, "ERROR: Data could not be loaded!", Toast.LENGTH_SHORT).show();
-            }
+            else Toast.makeText(MainActivity.this, Constants.DATA_LOADING_WARNING_MESSAGE, Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -106,6 +105,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void createOilsListener(){
         oils.setOnClickListener(view -> loadAdapter(Category.OILS));
+    }
+
+    public void createOffersListener(){
+        offersButton.setOnClickListener(view -> loadAdapter(Category.OFFERS));
     }
 
     public void loadListOfOffers(){

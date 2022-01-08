@@ -19,8 +19,9 @@ public class HashingSHA256 {
         }catch(NoSuchAlgorithmException e){
             e.printStackTrace();
         }
-        messageDigest.reset();
-        return messageDigest.digest(string.getBytes(StandardCharsets.UTF_8));
+        if (messageDigest != null) messageDigest.reset();
+        if (messageDigest != null) return messageDigest.digest(string.getBytes(StandardCharsets.UTF_8));
+        return null;
     }
 
     public static String convertByteArrayToHex(byte[] data){

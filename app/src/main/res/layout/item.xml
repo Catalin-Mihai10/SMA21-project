@@ -128,7 +128,7 @@
                 android:layout_width="119dp"
                 android:layout_height="39dp"
                 android:background="#24755A"
-                android:text="add to cart"
+                android:text="ADAUGĂ ÎN COȘ"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />

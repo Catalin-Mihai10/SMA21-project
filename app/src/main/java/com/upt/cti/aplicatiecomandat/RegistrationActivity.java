@@ -1,7 +1,6 @@
 package com.upt.cti.aplicatiecomandat;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,9 +28,6 @@ public class RegistrationActivity extends AppCompatActivity {
         cancel = findViewById(Constants.CANCEL_BUTTON);
 
         initializeFields();
-
-        Log.d(Constants.REGISTRATION_TAG, "RegistrationActivity started");
-
         createSubmitListener();
         createCancelListener();
     }
@@ -43,30 +39,23 @@ public class RegistrationActivity extends AppCompatActivity {
 
     public void createSubmitListener(){
         submit.setOnClickListener(view -> {
+            if(!username.getText().toString().equals(Constants.EMPTY_STRING) &&  !password.getText().toString().equals(Constants.EMPTY_STRING)){
+                ClientModule client = new ClientModule(username.getText().toString(),  password.getText().toString());
 
-            ClientModule client = new ClientModule(username.getText().toString(),  password.getText().toString());
-
-            client.register(data -> {
-                if(data) finish();
-                else {
-                    Toast.makeText(RegistrationActivity.this, "An account with this name already exist!", Toast.LENGTH_SHORT).show();
-                    Log.d(Constants.REGISTRATION_TAG, "Failed registration!");
-                }
-            });
+                client.register(data -> {
+                    if(data) finish();
+                    else Toast.makeText(RegistrationActivity.this, Constants.ACCOUNT_CREATION_WARNING_MESSAGE, Toast.LENGTH_SHORT).show();
+                });
+            } else Toast.makeText(RegistrationActivity.this, Constants.EMPTY_FIELDS_WARNING_MESSAGE, Toast.LENGTH_SHORT).show();
 
         });
     }
 
     public void createCancelListener(){
         cancel.setOnClickListener(view -> {
-
-            Log.d(Constants.REGISTRATION_TAG, "Cancel registration");
             username.setText(Constants.EMPTY_STRING);
             password.setText(Constants.EMPTY_STRING);
-
-            Log.d(Constants.REGISTRATION_TAG, "return to MainActivity");
             finish();
-
         });
     }
 

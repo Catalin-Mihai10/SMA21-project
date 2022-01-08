@@ -90,7 +90,7 @@
         android:layout_width="136dp"
         android:layout_height="48dp"
         android:background="@drawable/ic_rounded_shapes"
-        android:text="INREGISTRARE"
+        android:text="ÎNREGISTRARE"
         android:textColor="#752424"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

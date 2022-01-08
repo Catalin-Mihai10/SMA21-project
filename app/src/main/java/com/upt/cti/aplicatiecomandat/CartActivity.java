@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,8 +41,10 @@ public class CartActivity extends AppCompatActivity {
 
     public void createSubmitCommandListener(){
         submitCommand.setOnClickListener(view -> {
-            startActivity(new Intent(CartActivity.this, ShipmentActivity.class));
-            finish();
+            if(!CommandHandler.getCart().isEmpty()){
+                startActivity(new Intent(CartActivity.this, ShipmentActivity.class));
+                finish();
+            }else Toast.makeText(CartActivity.this, Constants.CONFIRM_COMMAND_WARNING_MESSAGE, Toast.LENGTH_SHORT).show();
         });
     }
 
